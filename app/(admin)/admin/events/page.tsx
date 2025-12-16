@@ -39,7 +39,7 @@ import {
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import dayjs from 'dayjs'
-import { PageHeader, EventCalendar, CalendarEvent } from '@/components'
+import { PageHeader, EventCalendar, CalendarEvent, PocContextCard } from '@/components'
 import { 
   getMyEvents, 
   getAllEvents, 
@@ -327,6 +327,26 @@ export default function EventsPage() {
           </Button>
         }
       />
+
+      <PocContextCard title="POC Context: Event Management">
+        <strong>Why this page exists:</strong> This is the <em>core of the MVP</em>. The second stakeholder hui 
+        revealed that contributors' main pain point is <strong>avoiding scheduling clashes</strong> when creating events. 
+        This page directly addresses that insight with soft clash detection.
+        <br />
+        <strong>What we're demonstrating:</strong>
+        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
+          <li>Create events with title, date/time, location, description (modal)</li>
+          <li>Clash warnings shown during creation (yellow alert with kaupapa names)</li>
+          <li>View events chronologically (list view with sorting)</li>
+          <li>Entity filter: Toggle visibility of other kaupapa to see potential overlaps</li>
+        </ul>
+        <strong>Design decisions:</strong> We offer both calendar and list views to suit different workflows. 
+        The calendar lets contributors click a date to create, while the list is better for bulk review. 
+        Clash detection is "soft" — it warns but doesn't block, respecting contributor autonomy. 
+        The preview modal for other kaupapa events only shows date/time (not location) to protect privacy.
+        <br />
+        <strong>What's NOT here:</strong> RSVP, recurring events, .ics export, notifications — all explicitly out of scope per brief.
+      </PocContextCard>
 
       {/* View Controls */}
       <Card bordered={false} style={{ marginBottom: layout.cardGap }}>

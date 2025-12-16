@@ -31,7 +31,7 @@ import {
 } from '@ant-design/icons'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import { PageHeader } from '@/components'
+import { PageHeader, PocContextCard } from '@/components'
 import { 
   getEvent, 
   updateEvent, 
@@ -230,6 +230,25 @@ export default function EventDetailPage() {
           )
         }
       />
+
+      <PocContextCard title="POC Context: Event Detail & Editing">
+        <strong>Why this page exists:</strong> The brief requires contributors to be able to edit or delete 
+        their events. This dedicated detail page provides a focused editing experience with full context.
+        <br />
+        <strong>What we're demonstrating:</strong>
+        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
+          <li>View full event details in a clean, readable format</li>
+          <li>Edit mode with inline form (toggle between view/edit)</li>
+          <li>Live clash re-checking when dates/times are changed</li>
+          <li>Delete with confirmation modal</li>
+        </ul>
+        <strong>Design decisions:</strong> We chose a view/edit toggle rather than always-editable fields. This provides 
+        a clear reading mode and prevents accidental changes. The clash warning re-checks on every date/time change, 
+        ensuring contributors are always aware of potential overlaps — even when editing existing events.
+        <br />
+        <strong>Scope note:</strong> Per the brief, there's no version history or recovery — deletes are permanent. 
+        This matches the MVP's "no extra UX" principle.
+      </PocContextCard>
 
       <Card bordered={false}>
         {editing ? (

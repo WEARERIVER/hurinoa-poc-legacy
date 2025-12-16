@@ -41,11 +41,17 @@ export default function AdminDashboardPage() {
         }
       />
 
-      <PocContextCard>
-        This is the <strong>Contributor Dashboard</strong> — the home screen for kaupapa administrators. 
-        Contributors can see a quick overview of their upcoming events, access key actions, and navigate 
-        to manage events or users. This demonstrates the "contributor view" of the platform where 
-        event coordination happens.
+      <PocContextCard title="POC Context: Contributor Dashboard">
+        <strong>Why this page exists:</strong> The POC brief identified that <em>contributors bear the operational burden</em> of 
+        event coordination. This dashboard is their home base — a clear entry point to the scheduling tools they need most.
+        <br />
+        <strong>What we're demonstrating:</strong> Quick access to event creation, at-a-glance stats on upcoming events, 
+        and clear navigation to manage events or users. The stats shown (Upcoming, This Week, Past) help contributors 
+        gauge their workload without drilling into lists.
+        <br />
+        <strong>Design decisions:</strong> We kept this screen deliberately minimal — no analytics, no complex widgets. 
+        The brief explicitly deferred reporting and dashboarding. The "What's in this POC" panel helps the client 
+        see what's included vs. what's coming later, managing expectations upfront.
       </PocContextCard>
 
       {/* Quick Stats */}

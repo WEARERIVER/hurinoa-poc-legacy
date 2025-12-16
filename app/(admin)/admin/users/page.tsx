@@ -35,7 +35,7 @@ import {
   ClockCircleOutlined
 } from '@ant-design/icons'
 import dayjs from 'dayjs'
-import { PageHeader } from '@/components'
+import { PageHeader, PocContextCard } from '@/components'
 import { 
   getMyUri, 
   getUriStats,
@@ -297,6 +297,27 @@ export default function UsersPage() {
           </Button>
         }
       />
+
+      <PocContextCard title="POC Context: User Management">
+        <strong>Why this page exists:</strong> The brief requires admins to be able to upload CSV or manually 
+        assign users (uri) to kaupapa. This page demonstrates the contributor's ability to manage their user list, 
+        which is the basis for the uri-to-kaupapa linkage that powers the Uri Dashboard.
+        <br />
+        <strong>What we're demonstrating:</strong>
+        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
+          <li>View all uri linked to this kaupapa with search and filters</li>
+          <li>Add new uri manually (simplified form in lieu of full CSV import)</li>
+          <li>Edit uri details and toggle active/inactive status</li>
+          <li>Role assignment (contributor vs uri) — scoped to one kaupapa per the MVP assumption</li>
+        </ul>
+        <strong>Design decisions:</strong> For the POC, we simplified the "manual import" requirement to a form-based 
+        entry rather than full CSV upload. This proves the data model and UI patterns without the complexity of file parsing. 
+        CSV upload could be added in a future phase.
+        <br />
+        <strong>Scope note:</strong> The brief states "one contributor or uri per kaupapa for MVP". We've shown users 
+        can be linked to multiple kaupapa in the data model (for future flexibility), but the UI is scoped to managing 
+        users within the current contributor's single kaupapa.
+      </PocContextCard>
 
       {/* Stats Cards */}
       <Row gutter={layout.cardGap} style={{ marginBottom: layout.cardGap }}>
