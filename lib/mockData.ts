@@ -1,7 +1,7 @@
 // ============================================================================
 // Mock Data Store
 // ============================================================================
-// In-memory data store for POC. Simulates a database with kaupapa and events.
+// In-memory data store for POC. Simulates a database with kaupapa, events, and uri.
 // Events from other kaupapa are included to demonstrate clash detection.
 
 export interface Kaupapa {
@@ -23,6 +23,19 @@ export interface Event {
   updatedAt: string
 }
 
+export interface Uri {
+  id: string
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string
+  role: 'uri' | 'contributor'
+  status: 'active' | 'inactive'
+  kaupapa: string[]  // Can be linked to multiple kaupapa
+  joinedAt: string
+  notes?: string
+}
+
 // ----------------------------------------------------------------------------
 // Kaupapa (entities/groups)
 // ----------------------------------------------------------------------------
@@ -36,6 +49,80 @@ export const kaupapa: Kaupapa[] = [
 
 // The current contributor's kaupapa (for POC, Aroha manages kp-1)
 export const CURRENT_KAUPAPA_ID = 'kp-1'
+
+// ----------------------------------------------------------------------------
+// Uri (Users linked to kaupapa)
+// ----------------------------------------------------------------------------
+
+let uri: Uri[] = [
+  {
+    id: 'uri-1',
+    firstName: 'Hine',
+    lastName: 'Moana',
+    email: 'hine.moana@email.com',
+    phone: '021 123 4567',
+    role: 'contributor',
+    status: 'active',
+    kaupapa: ['kp-1'],
+    joinedAt: '2024-03-15',
+    notes: 'Lead contributor for community events',
+  },
+  {
+    id: 'uri-2',
+    firstName: 'Tama',
+    lastName: 'Raukawa',
+    email: 'tama.r@email.com',
+    phone: '022 234 5678',
+    role: 'uri',
+    status: 'active',
+    kaupapa: ['kp-1'],
+    joinedAt: '2024-06-01',
+  },
+  {
+    id: 'uri-3',
+    firstName: 'Mere',
+    lastName: 'Tūhoe',
+    email: 'mere.tuhoe@email.com',
+    role: 'uri',
+    status: 'active',
+    kaupapa: ['kp-1'],
+    joinedAt: '2024-08-20',
+  },
+  {
+    id: 'uri-4',
+    firstName: 'Wiremu',
+    lastName: 'Ngata',
+    email: 'wiremu.n@email.com',
+    phone: '027 345 6789',
+    role: 'uri',
+    status: 'active',
+    kaupapa: ['kp-1', 'kp-2'], // Linked to multiple kaupapa
+    joinedAt: '2024-04-10',
+    notes: 'Also involved with Ngā Tamariki Trust',
+  },
+  {
+    id: 'uri-5',
+    firstName: 'Anahera',
+    lastName: 'Pōtiki',
+    email: 'anahera.p@email.com',
+    role: 'uri',
+    status: 'inactive',
+    kaupapa: ['kp-1'],
+    joinedAt: '2023-11-05',
+    notes: 'On leave until February',
+  },
+  {
+    id: 'uri-6',
+    firstName: 'Rongo',
+    lastName: 'Māhaki',
+    email: 'rongo.m@email.com',
+    phone: '021 456 7890',
+    role: 'contributor',
+    status: 'active',
+    kaupapa: ['kp-1'],
+    joinedAt: '2024-01-20',
+  },
+]
 
 // ----------------------------------------------------------------------------
 // Events (seeded with sample data including other kaupapa for clash testing)
@@ -255,6 +342,79 @@ export function deleteEvent(id: string): boolean {
   if (events[index].kaupapa !== CURRENT_KAUPAPA_ID) return false
   
   events.splice(index, 1)
+  return true
+}
+
+// ----------------------------------------------------------------------------
+// Uri Data Access Functions
+// ----------------------------------------------------------------------------
+
+// Get all uri for the current kaupapa
+export function getMyUri(): Uri[] {
+  return uri
+    .filter(u => u.kaupapa.includes(CURRENT_KAUPAPA_ID))
+    .sort((a, b) => a.lastName.localeCompare(b.lastName))
+}
+
+export function getUri(id: string): Uri | undefined {
+  return uri.find(u => u.id === id)
+}
+
+// Get uri stats for dashboard
+export function getUriStats() {
+  const myUri = getMyUri()
+  return {
+    total: myUri.length,
+    active: myUri.filter(u => u.status === 'active').length,
+    contributors: myUri.filter(u => u.role === 'contributor').length,
+    uriCount: myUri.filter(u => u.role === 'uri').length,
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Uri CRUD Operations
+// ----------------------------------------------------------------------------
+
+export function createUri(data: Omit<Uri, 'id' | 'joinedAt'>): Uri {
+  const newUri: Uri = {
+    ...data,
+    id: `uri-${Date.now()}`,
+    kaupapa: data.kaupapa.length > 0 ? data.kaupapa : [CURRENT_KAUPAPA_ID],
+    joinedAt: new Date().toISOString().split('T')[0],
+  }
+  uri.push(newUri)
+  return newUri
+}
+
+export function updateUri(id: string, data: Partial<Omit<Uri, 'id' | 'joinedAt'>>): Uri | undefined {
+  const index = uri.findIndex(u => u.id === id)
+  if (index === -1) return undefined
+  
+  // Only allow updating uri linked to our kaupapa
+  if (!uri[index].kaupapa.includes(CURRENT_KAUPAPA_ID)) return undefined
+  
+  uri[index] = {
+    ...uri[index],
+    ...data,
+  }
+  return uri[index]
+}
+
+export function deleteUri(id: string): boolean {
+  const index = uri.findIndex(u => u.id === id)
+  if (index === -1) return false
+  
+  // Only allow deleting uri linked to our kaupapa
+  if (!uri[index].kaupapa.includes(CURRENT_KAUPAPA_ID)) return false
+  
+  // If linked to multiple kaupapa, just remove from ours
+  if (uri[index].kaupapa.length > 1) {
+    uri[index].kaupapa = uri[index].kaupapa.filter(k => k !== CURRENT_KAUPAPA_ID)
+    return true
+  }
+  
+  // Otherwise delete entirely
+  uri.splice(index, 1)
   return true
 }
 
