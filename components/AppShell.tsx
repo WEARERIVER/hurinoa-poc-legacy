@@ -15,7 +15,7 @@ import {
   CloseOutlined,
 } from '@ant-design/icons'
 import { navigation } from '@/lib/navigation'
-import { primary, neutral, layout, borderRadius } from '@/theme'
+import { primary, secondary, neutral, layout, borderRadius } from '@/theme'
 
 const { Header, Sider, Content } = Layout
 const { Text } = Typography
@@ -106,22 +106,23 @@ export function AppShell({ children }: AppShellProps) {
         style={{
           width: 32,
           height: 32,
-          background: primary[500],
-          borderRadius: borderRadius.md,
+          background: `linear-gradient(135deg, ${primary[400]} 0%, ${primary[600]} 100%)`,
+          borderRadius: borderRadius.lg,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           color: '#fff',
-          fontWeight: 600,
-          fontSize: 14,
+          fontWeight: 700,
+          fontSize: 15,
           flexShrink: 0,
+          boxShadow: `0 2px 8px ${primary[500]}30`,
         }}
       >
-        C
+        H
       </div>
       {showText && (
-        <Text strong style={{ marginLeft: 12, fontSize: 15, color: neutral[800] }}>
-          CATALYST
+        <Text strong style={{ marginLeft: 12, fontSize: 16, color: neutral[800], letterSpacing: '-0.02em' }}>
+          Huri Noa
         </Text>
       )}
     </div>
@@ -270,7 +271,7 @@ export function AppShell({ children }: AppShellProps) {
               <Avatar 
                 size={32} 
                 icon={<UserOutlined />} 
-                style={{ backgroundColor: '#5b9bf8' }} 
+                style={{ backgroundColor: secondary[500] }} 
               />
               {/* Hide username on mobile */}
               {!isMobile && <Text style={{ color: neutral[700] }}>User</Text>}

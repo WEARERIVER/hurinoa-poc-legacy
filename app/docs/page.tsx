@@ -347,7 +347,7 @@ function OverviewTab() {
         title={
           <>
             <Title level={2} style={{ color: '#fff', margin: 0, fontWeight: 600 }}>
-              <span style={{ fontWeight: 700 }}>CATALYST</span> AI Starter Kit
+              <span style={{ fontWeight: 700 }}>Huri Noa POC 1</span> AI Starter Kit
             </Title>
           </>
         }
@@ -517,13 +517,13 @@ function ArchitectureTab() {
             Project Architecture
           </Title>
         }
-        subtitle="This section provides technical depth on how Catalyst is structured. Useful for understanding extension points and making architectural decisions."
+        subtitle="This section provides technical depth on how Huri Noa POC 1 is structured. Useful for understanding extension points and making architectural decisions."
       />
 
       {/* Rendering Model */}
       <Section title="Next.js Rendering Model" icon={<GlobalOutlined style={{ color: primary[500] }} />}>
         <Paragraph type="secondary" style={{ marginBottom: layout.cardGap }}>
-          Catalyst uses Next.js 14 App Router with a hybrid rendering approach:
+          Huri Noa POC 1 uses Next.js 14 App Router with a hybrid rendering approach:
         </Paragraph>
         <Row gutter={[layout.cardGap, layout.cardGap]}>
           <Col xs={24} md={8}>
@@ -798,7 +798,7 @@ function ArchitectureTab() {
       {/* Extension Points */}
       <Section title="Extension Points">
         <Paragraph type="secondary" style={{ marginBottom: layout.cardGap }}>
-          Where to make changes when extending Catalyst:
+          Where to make changes when extending Huri Noa POC 1:
         </Paragraph>
         <Table
           size="small"
@@ -998,7 +998,7 @@ function GettingStartedTab() {
         title={
           <Title level={3} style={{ margin: 0, color: neutral[800] }}>
             <RocketOutlined style={{ marginRight: 8, color: primary[500] }} />
-            Welcome to CATALYST
+            Welcome to Huri Noa POC 1
           </Title>
         }
         subtitle="This guide will walk you through setting up your development environment and customizing this project. Whether you're new to coding or an experienced developer, follow these steps to get started."
@@ -1110,7 +1110,7 @@ function GettingStartedTab() {
                     size="small"
                     current={-1}
                     items={[
-                      { title: 'Go to the CATALYST template repository', description: 'Open the GitHub repo for this starter kit' },
+                      { title: 'Go to the Huri Noa POC 1 template repository', description: 'Open the GitHub repo for this starter kit' },
                       { title: 'Click the green "Use this template" button', description: 'Located near the top-right of the repo page' },
                       { title: 'Select "Create a new repository"' },
                       { title: 'Name your repository', description: 'e.g., "my-admin-app" or "client-dashboard"' },
@@ -1336,14 +1336,14 @@ function GettingStartedTab() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <Text strong>Rename & Customize Project</Text>
             {(() => {
-              const promptText = `Read AGENTS.md, then rename this project from "CATALYST" to "[YOUR PROJECT NAME]".
+              const promptText = `Read AGENTS.md, then rename this project from "Huri Noa POC 1" to "[YOUR PROJECT NAME]".
 
 Update:
-1. The logo text in AppShell.tsx (change "CATALYST" to my new name)
+1. The logo text in AppShell.tsx (change "Huri Noa POC 1" to my new name)
 2. The page title in app/layout.tsx
 3. The package name in package.json
 4. The heading in AGENTS.md
-5. Any other references to "CATALYST" in the codebase
+5. Any other references to "Huri Noa POC 1" in the codebase
 
 My new project name is: [YOUR PROJECT NAME]`
               return (
@@ -1367,14 +1367,14 @@ My new project name is: [YOUR PROJECT NAME]`
             whiteSpace: 'pre-wrap',
             lineHeight: 1.5,
           }}>
-{`Read AGENTS.md, then rename this project from "CATALYST" to "[YOUR PROJECT NAME]".
+{`Read AGENTS.md, then rename this project from "Huri Noa POC 1" to "[YOUR PROJECT NAME]".
 
 Update:
 1. The logo text in AppShell.tsx
 2. The page title in app/layout.tsx
 3. The package name in package.json
 4. The heading in AGENTS.md
-5. Any other references to "CATALYST"`}
+5. Any other references to "Huri Noa POC 1"`}
           </pre>
         </Card>
 
@@ -2141,7 +2141,7 @@ function AIWorkflowTab() {
       <Section title="Sample Planning Prompt (for External AI)">
         <Card size="small" style={{ backgroundColor: neutral[50] }}>
           <pre style={{ margin: 0, fontSize: fontSize.xs, lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
-{`I'm planning a new feature for a CATALYST project.
+{`I'm planning a new feature for a Huri Noa POC 1 project.
 
 Context:
 - Next.js 14 + Ant Design 5 + TypeScript
@@ -2168,7 +2168,7 @@ Format the prompts so they reference specific files and patterns in the codebase
         </Paragraph>
         <Card size="small" style={{ backgroundColor: neutral[50] }}>
           <pre style={{ margin: 0, fontSize: fontSize.xs, lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
-{`I'm working on a CATALYST project — an AI Starter Kit for rapid development.
+{`I'm working on a Huri Noa POC 1 project — an AI Starter Kit for rapid development.
 
 Technology stack:
 - Next.js 14 (App Router)
@@ -2419,7 +2419,7 @@ function InfrastructureTab() {
             Infrastructure & Deployment
           </Title>
         }
-        subtitle="This section documents the recommended deployment workflow for Catalyst projects: GitHub (private repo) → Vercel (auto-deploy) → Production."
+        subtitle="This section documents the recommended deployment workflow for Huri Noa POC 1 projects: GitHub (private repo) → Vercel (auto-deploy) → Production."
       />
 
       {/* Infrastructure Decision Guide */}
@@ -2491,7 +2491,7 @@ function InfrastructureTab() {
       </Section>
 
       {/* Git/GitHub Setup */}
-      <Section title="Git/GitHub Setup (Catalyst Standard)">
+      <Section title="Git/GitHub Setup (Huri Noa POC 1 Standard)">
         <Row gutter={[layout.cardGap, layout.cardGap]}>
           <Col xs={24} md={12}>
             <Card size="small" title={<><GithubOutlined style={{ marginRight: 8 }} />Repository Standards</>}>
@@ -2726,7 +2726,7 @@ My GitHub email is: [INSERT YOUR GITHUB EMAIL]`}</CodeBlock>
               key: '3',
               label: <Text strong>Add Supabase env vars safely</Text>,
               children: (
-                <CodeBlock>{`Read AGENTS.md. I need to add Supabase to this Catalyst project.
+                <CodeBlock>{`Read AGENTS.md. I need to add Supabase to this Huri Noa POC 1 project.
 
 Help me:
 1. Create/update .env.example with placeholder Supabase vars

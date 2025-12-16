@@ -24,84 +24,88 @@
 // ============================================================================
 
 /**
- * Primary Colour Palette
+ * Primary Colour Palette — Warm Coral/Terracotta
  * Used for: Primary actions, links, focus states, active elements
+ * 
+ * Inspired by warm, earthy tones that feel approachable and grounded.
  */
 export const primary = {
-  50: '#f0f5ff',
-  100: '#e6efff',
-  200: '#bdd4ff',
-  300: '#8fb5fe',
-  400: '#6495fe',
-  500: '#407EFE', // Base primary
-  600: '#3366d4',
-  700: '#2650a8',
-  800: '#1a3a7c',
-  900: '#0f2550',
+  50: '#fef7f4',
+  100: '#fdeee8',
+  200: '#facfc0',
+  300: '#f5ab8f',
+  400: '#eb8a64',
+  500: '#E07B54', // Base primary — warm coral
+  600: '#c9694a',
+  700: '#a85640',
+  800: '#874436',
+  900: '#5c2e26',
 } as const
 
 /**
- * Secondary Colour Palette
+ * Secondary Colour Palette — Warm Teal/Jade
  * Used for: Success states, positive actions, confirmations
+ * 
+ * Warm teal that complements the coral primary.
  */
 export const secondary = {
-  50: '#e6faf7',
-  100: '#ccf5ef',
-  200: '#99ebdf',
-  300: '#66e0cf',
-  400: '#33d6bf',
-  500: '#04B09E', // Base secondary
-  600: '#038d7e',
-  700: '#026a5f',
-  800: '#02473f',
-  900: '#012420',
+  50: '#edf8f6',
+  100: '#d5f0eb',
+  200: '#a8e0d6',
+  300: '#74cbbf',
+  400: '#4ab5a6',
+  500: '#2D8B7A', // Base secondary — warm teal
+  600: '#267566',
+  700: '#1f5f53',
+  800: '#184a41',
+  900: '#10342e',
 } as const
 
 /**
- * Neutral/Grey Colour Palette
+ * Neutral/Grey Colour Palette — Warm Tint
  * Used for: Text, borders, backgrounds, disabled states
  * 
- * Note: Improved contrast for better readability
+ * Warm-tinted neutrals (not cool/blue grays) for a softer, more inviting feel.
  * - Use 700+ for body text
- * - Use 500+ for secondary/helper text (not 400)
+ * - Use 500+ for secondary/helper text
  */
 export const neutral = {
-  50: '#f9fafb',
-  100: '#f3f4f6',
-  200: '#e5e7eb',
-  300: '#d1d5db',
-  400: '#9ca3af',
-  500: '#6b7280', // Helper text (minimum for readability)
-  600: '#4b5563', // Secondary text
-  700: '#374151', // Body text
-  800: '#1f2937', // Headings
-  900: '#111827', // High emphasis
+  50: '#faf9f7',  // Warm off-white
+  100: '#f5f3f0', // Warm light gray
+  200: '#e8e5e1', // Warm border color
+  300: '#d6d2cc', // Warm disabled
+  400: '#a8a29e', // Muted text
+  500: '#78716c', // Helper text (minimum for readability)
+  600: '#57534e', // Secondary text
+  700: '#44403c', // Body text
+  800: '#292524', // Headings
+  900: '#1c1917', // High emphasis
 } as const
 
 /**
- * Semantic Colours
+ * Semantic Colours — Warm Variants
  * Used for: Feedback states (info, success, warning, error)
  */
 export const semantic = {
   info: {
-    light: '#e6f7ff',
-    base: '#1890ff',
-    dark: '#0050b3',
+    light: '#f0f7ff',
+    base: '#3b82f6',
+    dark: '#1d4ed8',
   },
   success: {
-    light: '#f6ffed',
-    base: '#52c41a',
-    dark: '#237804',
+    light: '#ecfdf5',
+    base: '#2D8B7A', // Uses secondary teal for cohesion
+    dark: '#1f5f53',
   },
   warning: {
-    light: '#fffbe6',
-    base: '#faad14',
-    dark: '#ad6800',
+    light: '#fffbeb',
+    base: '#f59e0b',
+    dark: '#b45309',
   },
   error: {
-    light: '#fff2f0',
-    base: '#ff4d4f',
-    dark: '#a8071a',
+    light: '#fef2f2',
+    base: '#ef4444',
+    dark: '#b91c1c',
   },
 } as const
 
@@ -111,9 +115,12 @@ export const semantic = {
 
 /**
  * Font Family
+ * 
+ * Plus Jakarta Sans: Modern, warm, excellent readability.
+ * Pairs well with our earthy color palette.
  */
 export const fontFamily = {
-  base: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+  base: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
   mono: "'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
 } as const
 
@@ -223,25 +230,28 @@ export const layout = {
 /**
  * Border Radius
  * 
+ * Slightly larger radii for a softer, warmer feel.
  * Use sm for small elements, md for cards/inputs, lg for modals
  */
 export const borderRadius = {
   none: 0,
-  sm: 4,
-  md: 6, // Default for most components
-  lg: 8,
-  xl: 12,
+  sm: 6,
+  md: 10, // Default for most components — slightly rounder
+  lg: 14,
+  xl: 20,
   full: 9999,
 } as const
 
 /**
- * Shadows
+ * Shadows — Warm tinted
+ * 
+ * Using warm brown tint instead of pure black for softer appearance.
  */
 export const shadow = {
-  sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-  base: '0 2px 8px rgba(0, 0, 0, 0.1)',
-  md: '0 4px 12px rgba(0, 0, 0, 0.1)',
-  lg: '0 8px 24px rgba(0, 0, 0, 0.12)',
+  sm: '0 1px 2px 0 rgba(41, 37, 36, 0.05)',
+  base: '0 2px 8px rgba(41, 37, 36, 0.08)',
+  md: '0 4px 12px rgba(41, 37, 36, 0.10)',
+  lg: '0 8px 24px rgba(41, 37, 36, 0.12)',
 } as const
 
 // ============================================================================

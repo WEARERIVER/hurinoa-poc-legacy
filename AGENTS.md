@@ -1,4 +1,4 @@
-# CATALYST — AI Starter Kit
+# Huri Noa POC 1 — AI Starter Kit
 
 This file gives AI assistants (Claude, Cursor, Copilot) context about this project.
 
@@ -6,7 +6,7 @@ This file gives AI assistants (Claude, Cursor, Copilot) context about this proje
 
 ## Project Overview
 
-**CATALYST** is an AI Starter Kit for building admin dashboards, internal tools, and data management apps.
+**Huri Noa POC 1** is an AI Starter Kit for building admin dashboards, internal tools, and data management apps.
 
 **Tech:** Next.js 14 + Ant Design 5 + TypeScript
 

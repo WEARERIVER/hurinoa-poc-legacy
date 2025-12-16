@@ -1,4 +1,4 @@
-# CATALYST
+# Huri Noa POC 1
 
 **The AI Starter Kit for Rapid Development by RIVER Group**
 
@@ -184,4 +184,4 @@ import { primary, neutral, layout, fontSize } from '@/theme'
 
 ---
 
-RIVER Group — CATALYST v1.0
+RIVER Group — Huri Noa POC 1 v1.0

@@ -1,4 +1,4 @@
-# CATALYST Prompts
+# Huri Noa POC 1 Prompts
 
 Copy-paste prompts for AI-assisted development. Replace `[PLACEHOLDERS]` with your specifics.
 

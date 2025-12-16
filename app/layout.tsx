@@ -7,7 +7,7 @@ import { AppShell } from '@/components'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'CATALYST',
+  title: 'Huri Noa POC 1',
   description: 'AI Starter Kit for Rapid Development',
   icons: {
     icon: [
@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
