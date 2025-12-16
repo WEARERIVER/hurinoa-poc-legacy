@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Layout, Menu, Input, Avatar, Space, Typography, Dropdown, Drawer, Grid, App, Tag, Switch, Tooltip } from 'antd'
+import { Layout, Menu, Input, Avatar, Space, Typography, Dropdown, Drawer, Grid, App, Switch, Tooltip, Button, Tag } from 'antd'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -14,6 +14,7 @@ import {
   LogoutOutlined,
   CloseOutlined,
   SwapOutlined,
+  PlusOutlined,
 } from '@ant-design/icons'
 import { getNavigationForUserType, getUserTypeFromPath, getHomePathForUserType } from '@/lib/navigation'
 import { useUser, UserType } from '@/lib/userContext'
@@ -57,6 +58,13 @@ export function AppShell({ children }: AppShellProps) {
   
   // Determine if we're on mobile
   const isMobile = !screens.lg
+
+  // Time-based greeting
+  const greeting = useMemo(() => {
+    const hour = new Date().getHours()
+    if (hour < 12) return 'Mōrena'
+    return 'Kia ora'
+  }, [])
 
   // Auto-detect user type from URL and sync context
   useEffect(() => {
@@ -143,14 +151,16 @@ export function AppShell({ children }: AppShellProps) {
       items={menuItems}
       style={{ 
         border: 'none', 
-        padding: '16px 8px',
+        padding: '12px 12px',
         fontWeight: 500,
+        background: 'transparent',
+        fontSize: 14,
       }}
       onClick={() => isMobile && setMobileMenuOpen(false)}
     />
   )
 
-  // Logo component
+  // Logo component with gradient background
   const Logo = ({ showText = true }: { showText?: boolean }) => (
     <div
       style={{
@@ -158,31 +168,32 @@ export function AppShell({ children }: AppShellProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: showText ? 'flex-start' : 'center',
-        padding: showText ? '0 20px' : 0,
-        borderBottom: `1px solid ${neutral[200]}`,
+        padding: showText ? '0 16px' : 0,
+        background: `linear-gradient(135deg, ${primary[500]} 0%, ${secondary[500]} 100%)`,
       }}
     >
       <div
         style={{
-          width: 32,
-          height: 32,
-          background: `linear-gradient(135deg, ${primary[400]} 0%, ${primary[600]} 100%)`,
-          borderRadius: borderRadius.lg,
+          width: 36,
+          height: 36,
+          background: 'rgba(255,255,255,0.2)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: borderRadius.md,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           color: '#fff',
           fontWeight: 700,
-          fontSize: 15,
+          fontSize: 14,
           flexShrink: 0,
-          boxShadow: `0 2px 8px ${primary[500]}30`,
+          letterSpacing: '0.02em',
         }}
       >
-        H
+        HN
       </div>
       {showText && (
-        <Text strong style={{ marginLeft: 12, fontSize: 16, color: neutral[800], letterSpacing: '-0.02em' }}>
-          Huri Noa POC
+        <Text strong style={{ marginLeft: 12, fontSize: 15, color: '#fff', letterSpacing: '-0.01em' }}>
+          Huri Noa
         </Text>
       )}
     </div>
@@ -207,7 +218,7 @@ export function AppShell({ children }: AppShellProps) {
             left: 0,
             top: 0,
             bottom: 0,
-            background: '#fff',
+            background: `linear-gradient(180deg, ${primary[50]} 0%, #fff 30%)`,
             borderRight: `1px solid ${neutral[200]}`,
           }}
         >
@@ -225,11 +236,14 @@ export function AppShell({ children }: AppShellProps) {
         onClose={() => setMobileMenuOpen(false)}
         width={layout.sidebarWidth}
         styles={{ 
-          body: { padding: 0 },
+          body: { 
+            padding: 0,
+            background: `linear-gradient(180deg, ${primary[50]} 0%, #fff 30%)`,
+          },
           header: { display: 'none' },
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingRight: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Logo showText />
           <CloseOutlined 
             onClick={() => setMobileMenuOpen(false)}
@@ -238,6 +252,7 @@ export function AppShell({ children }: AppShellProps) {
               color: neutral[500], 
               cursor: 'pointer',
               padding: 8,
+              marginRight: 12,
             }}
           />
         </div>
@@ -266,7 +281,7 @@ export function AppShell({ children }: AppShellProps) {
             gap: 12,
           }}
         >
-          {/* Left side: Toggle + Search */}
+          {/* Left side: Toggle + Greeting */}
           <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 16, flex: 1, minWidth: 0 }}>
             <div
               onClick={() => isMobile ? setMobileMenuOpen(true) : setCollapsed(!collapsed)}
@@ -287,23 +302,31 @@ export function AppShell({ children }: AppShellProps) {
               {isMobile ? <MenuOutlined /> : (collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />)}
             </div>
             
-            {/* Search - hidden on very small screens, compact on mobile */}
-            {!screens.xs && (
-              <Input
-                placeholder="Search..."
-                prefix={<SearchOutlined style={{ color: neutral[400] }} />}
-                style={{ 
-                  width: isMobile ? 180 : 280,
-                  flexShrink: 1,
-                  borderRadius: borderRadius.md,
-                }}
-                variant="filled"
-              />
-            )}
+            {/* Time-based Greeting */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Text style={{ fontSize: 18, color: neutral[700] }}>{greeting},</Text>
+              <Text strong style={{ fontSize: 18, color: primary[500] }}>{user.name.split(' ')[0]}</Text>
+              {!isMobile && (
+                <Tag 
+                  style={{ 
+                    marginLeft: 4,
+                    background: `${userTypeColor}15`,
+                    color: userTypeColor,
+                    border: `1px solid ${userTypeColor}30`,
+                    fontWeight: 500,
+                    fontSize: 11,
+                    padding: '0 8px',
+                    borderRadius: 4,
+                  }}
+                >
+                  {userTypeLabel}
+                </Tag>
+              )}
+            </div>
           </div>
 
           {/* Right side: POC Toggle + User Avatar */}
-          <Space size={isMobile ? 8 : 16}>
+          <Space size={isMobile ? 8 : 12}>
             {/* POC Helpers Toggle */}
             <Tooltip title="Show POC Context">
               <div 
@@ -330,46 +353,42 @@ export function AppShell({ children }: AppShellProps) {
             </Tooltip>
 
             <Dropdown 
-            menu={{ 
-              items: userMenuItems,
-              onClick: ({ key }) => {
-                if (key === 'logout') {
-                  message.success('Successfully logged out')
-                } else if (key.startsWith('switch-')) {
-                  const newType = key.replace('switch-', '') as UserType
-                  handleSwitchProfile(newType)
+              menu={{ 
+                items: userMenuItems,
+                onClick: ({ key }) => {
+                  if (key === 'logout') {
+                    message.success('Successfully logged out')
+                  } else if (key.startsWith('switch-')) {
+                    const newType = key.replace('switch-', '') as UserType
+                    handleSwitchProfile(newType)
+                  }
                 }
-              }
-            }} 
-            trigger={['click']} 
-            placement="bottomRight"
-          >
-            <Space 
-              style={{ 
-                cursor: 'pointer',
-                padding: '2px 8px',
-                borderRadius: borderRadius.md,
-                transition: 'background 0.2s',
-                flexShrink: 0,
-                height: 48,
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = neutral[100]}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+              }} 
+              trigger={['click']} 
+              placement="bottomRight"
             >
-              <Avatar 
-                size={32} 
-                icon={<UserOutlined />} 
-                style={{ backgroundColor: userTypeColor }} 
-              />
-              {/* User name and type - hide on mobile */}
-              {!isMobile && (
-                <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+              <Space 
+                style={{ 
+                  cursor: 'pointer',
+                  padding: '4px 8px',
+                  borderRadius: borderRadius.md,
+                  transition: 'background 0.2s',
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = neutral[100]}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+              >
+                <Avatar 
+                  size={32} 
+                  icon={<UserOutlined />}
+                  style={{ backgroundColor: userTypeColor }}
+                />
+                {/* User name - hide on mobile */}
+                {!isMobile && (
                   <Text style={{ color: neutral[700], fontWeight: 500, fontSize: 14 }}>{user.name}</Text>
-                  <Text style={{ color: userTypeColor, fontSize: 12, marginTop: -2 }}>{userTypeLabel}</Text>
-                </div>
-              )}
-            </Space>
-          </Dropdown>
+                )}
+              </Space>
+            </Dropdown>
           </Space>
         </Header>
 

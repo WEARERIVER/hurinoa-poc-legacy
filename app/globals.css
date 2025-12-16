@@ -23,6 +23,72 @@ body {
   background-color: #f5f5f5;
 }
 
+/* ============================================================================
+   SIDEBAR NAVIGATION STYLING
+   ============================================================================ */
+
+/* Menu item base styling */
+.ant-menu-inline .ant-menu-item {
+  margin: 4px 0 !important;
+  border-radius: 8px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  color: #57534e !important;
+}
+
+/* Menu item hover state */
+.ant-menu-inline .ant-menu-item:hover {
+  background: rgba(224, 123, 84, 0.08) !important;
+  color: #E07B54 !important;
+}
+
+/* Menu item selected state */
+.ant-menu-inline .ant-menu-item-selected {
+  background: rgba(224, 123, 84, 0.12) !important;
+  color: #E07B54 !important;
+  font-weight: 600 !important;
+}
+
+/* Selected item left accent bar */
+.ant-menu-inline .ant-menu-item-selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: linear-gradient(180deg, #E07B54 0%, #F03E3E 100%);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Icon styling */
+.ant-menu-inline .ant-menu-item .ant-menu-item-icon {
+  font-size: 18px !important;
+}
+
+/* ============================================================================
+   HERO BUTTON STYLING
+   ============================================================================ */
+
+.hero-button {
+  background: linear-gradient(135deg, #E07B54 0%, #F03E3E 100%) !important;
+  border: none !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 8px rgba(224, 123, 84, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+
+.hero-button:hover {
+  background: linear-gradient(135deg, #c9694a 0%, #e03131 100%) !important;
+  box-shadow: 0 4px 12px rgba(224, 123, 84, 0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+.hero-button:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 6px rgba(224, 123, 84, 0.4) !important;
+}
+
 /* Mobile-specific improvements */
 @media (max-width: 768px) {
   /* Improve tap targets */

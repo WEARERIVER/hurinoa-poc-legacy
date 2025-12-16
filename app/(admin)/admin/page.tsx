@@ -29,12 +29,16 @@ export default function AdminDashboardPage() {
   return (
     <>
       <PageHeader
-        title={`Kia ora, Aroha`}
-        description="Contributor Dashboard — Manage your kaupapa events"
+        title="Contributor Dashboard"
+        description="View and manage your kaupapa events"
         breadcrumbs={[{ label: 'Dashboard' }]}
         actions={
           <Link href="/admin/events">
-            <Button type="primary" icon={<PlusOutlined />}>
+            <Button 
+              type="primary" 
+              icon={<PlusOutlined />}
+              className="hero-button"
+            >
               Create Event
             </Button>
           </Link>
