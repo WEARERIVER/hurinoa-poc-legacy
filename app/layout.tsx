@@ -35,7 +35,7 @@ export default function RootLayout({
         <AntdRegistry>
           <ConfigProvider theme={theme}>
             <App>
-              <AppShell>{children}</AppShell>
+              {children}
             </App>
           </ConfigProvider>
         </AntdRegistry>
