@@ -50,6 +50,10 @@ export const kaupapa: Kaupapa[] = [
 // The current contributor's kaupapa (for POC, Aroha manages kp-1)
 export const CURRENT_KAUPAPA_ID = 'kp-1'
 
+// The current uri (for POC, used by /app pages)
+// Keep this simple for now (no auth): pages read from this constant.
+export const CURRENT_URI_ID = 'uri-4'
+
 // ----------------------------------------------------------------------------
 // Uri (Users linked to kaupapa)
 // ----------------------------------------------------------------------------
@@ -358,6 +362,62 @@ export function getMyUri(): Uri[] {
 
 export function getUri(id: string): Uri | undefined {
   return uri.find(u => u.id === id)
+}
+
+export function getCurrentUri(): Uri {
+  return getUri(CURRENT_URI_ID)!
+}
+
+export function getKaupapaIdsForUri(uriId: string): string[] {
+  return getUri(uriId)?.kaupapa ?? []
+}
+
+export function getKaupapaForCurrentUri(): Kaupapa[] {
+  const ids = getKaupapaIdsForUri(CURRENT_URI_ID)
+  return kaupapa.filter(k => ids.includes(k.id))
+}
+
+function isEventInPast(event: Event, todayStr: string): boolean {
+  if (event.date < todayStr) return true
+  if (event.date > todayStr) return false
+
+  // Same day: if we have an end time, treat ended events as past.
+  if (!event.endTime) return false
+  const nowTime = new Date().toTimeString().slice(0, 5) // HH:mm
+  return nowTime >= event.endTime
+}
+
+export function isEventVisibleToUri(event: Event, uriId: string): boolean {
+  const visibleKaupapaIds = getKaupapaIdsForUri(uriId)
+  return visibleKaupapaIds.includes(event.kaupapa)
+}
+
+export function getEventsForUri(uriId: string): Event[] {
+  const visibleKaupapaIds = getKaupapaIdsForUri(uriId)
+  return events
+    .filter(e => visibleKaupapaIds.includes(e.kaupapa))
+    .sort((a, b) => a.date.localeCompare(b.date))
+}
+
+export function getUpcomingEventsForUri(uriId: string): Event[] {
+  const todayStr = formatDate(new Date())
+  return getEventsForUri(uriId)
+    .filter(e => !isEventInPast(e, todayStr))
+    .sort((a, b) => {
+      const dateCompare = a.date.localeCompare(b.date)
+      if (dateCompare !== 0) return dateCompare
+      return (a.startTime ?? '00:00').localeCompare(b.startTime ?? '00:00')
+    })
+}
+
+export function getUpcomingEventsForCurrentUri(): Event[] {
+  return getUpcomingEventsForUri(CURRENT_URI_ID)
+}
+
+export function getEventForUri(eventId: string, uriId: string): Event | undefined {
+  const event = getEvent(eventId)
+  if (!event) return undefined
+  return isEventVisibleToUri(event, uriId) ? event : undefined
 }
 
 // Get uri stats for dashboard

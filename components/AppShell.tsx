@@ -122,15 +122,14 @@ export function AppShell({ children }: AppShellProps) {
   const userTypeLabel = getUserTypeLabel(user.type)
   const userTypeColor = getUserTypeColor(user.type)
 
-  // Build switch menu items (exclude current type)
-  const switchOptions: UserType[] = ['contributor', 'uri', 'developer']
-  const switchMenuItems = switchOptions
-    .filter(type => type !== user.type)
-    .map(type => ({
-      key: `switch-${type}`,
-      icon: <SwapOutlined />,
-      label: `Switch to ${getUserTypeLabel(type)}`,
-    }))
+  // Build switch menu items
+  // For this POC we always show Uri + Contributor, and never show Developer.
+  // Selecting an option always routes to that role's homepage.
+  const switchMenuItems = (['contributor', 'uri'] as UserType[]).map(type => ({
+    key: `switch-${type}`,
+    icon: <SwapOutlined />,
+    label: `Switch to ${getUserTypeLabel(type)}`,
+  }))
 
   const userMenuItems = [
     { key: 'profile', icon: <UserOutlined />, label: 'Profile' },
@@ -358,6 +357,10 @@ export function AppShell({ children }: AppShellProps) {
                 onClick: ({ key }) => {
                   if (key === 'logout') {
                     message.success('Successfully logged out')
+                    router.push('/')
+                  } else if (key === 'profile') {
+                    const profilePath = user.type === 'contributor' ? '/admin/profile' : user.type === 'uri' ? '/app/profile' : '/dashboard'
+                    router.push(profilePath)
                   } else if (key.startsWith('switch-')) {
                     const newType = key.replace('switch-', '') as UserType
                     handleSwitchProfile(newType)
@@ -367,16 +370,21 @@ export function AppShell({ children }: AppShellProps) {
               trigger={['click']} 
               placement="bottomRight"
             >
-              <Space 
-                style={{ 
+              <div
+                style={{
                   cursor: 'pointer',
                   padding: '4px 8px',
                   borderRadius: borderRadius.md,
                   transition: 'background 0.2s',
                   flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  height: 40,
+                  boxSizing: 'border-box',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = neutral[100]}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = neutral[100])}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
               >
                 <Avatar 
                   size={32} 
@@ -387,7 +395,7 @@ export function AppShell({ children }: AppShellProps) {
                 {!isMobile && (
                   <Text style={{ color: neutral[700], fontWeight: 500, fontSize: 14 }}>{user.name}</Text>
                 )}
-              </Space>
+              </div>
             </Dropdown>
           </Space>
         </Header>

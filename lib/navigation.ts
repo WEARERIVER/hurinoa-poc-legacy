@@ -68,9 +68,16 @@ export const uriNavigation: NavItem[] = [
   {
     key: 'app-events',
     path: '/app/events',
-    label: 'Upcoming Events',
+    label: 'Events',
     description: 'View events from your kaupapa',
     icon: EyeOutlined,
+  },
+  {
+    key: 'app-profile',
+    path: '/app/profile',
+    label: 'My Profile',
+    description: 'View your account details',
+    icon: UserOutlined,
   },
 ]
 

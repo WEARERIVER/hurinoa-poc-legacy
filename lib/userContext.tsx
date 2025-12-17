@@ -19,7 +19,7 @@ export interface User {
 // Pre-seeded mock users for demo purposes
 export const MOCK_USERS: Record<UserType, User> = {
   contributor: { name: 'Aroha', type: 'contributor' },
-  uri: { name: 'Tane', type: 'uri' },
+  uri: { name: 'Wiremu', type: 'uri' },
   developer: { name: 'Dev', type: 'developer' },
 }
 
