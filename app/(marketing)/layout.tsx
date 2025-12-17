@@ -1,6 +1,7 @@
 'use client'
 
 import { Layout, Typography, Space, Button, Grid } from 'antd'
+import { ArrowRightOutlined } from '@ant-design/icons'
 import Link from 'next/link'
 import { primary, secondary, neutral, layout, borderRadius } from '@/theme'
 
@@ -66,19 +67,14 @@ export default function MarketingLayout({
 
         {/* Navigation */}
         <Space size={isMobile ? 8 : 16} wrap style={{ justifyContent: 'flex-end' }}>
-          <Link href="/about">
-            <Button size={isMobile ? 'small' : 'middle'} type="text" style={{ color: neutral[600], fontWeight: 500 }}>
-              About
-            </Button>
-          </Link>
           <Link href="/app">
             <Button size={isMobile ? 'small' : 'middle'} type="primary" style={{ fontWeight: 500 }}>
-              Uri
+              Open Uri <ArrowRightOutlined />
             </Button>
           </Link>
           <Link href="/admin">
             <Button size={isMobile ? 'small' : 'middle'} type="primary" style={{ fontWeight: 500 }}>
-              Contributor
+              Open Contributor <ArrowRightOutlined />
             </Button>
           </Link>
         </Space>
