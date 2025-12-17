@@ -133,7 +133,6 @@ export function AppShell({ children }: AppShellProps) {
 
   const userMenuItems = [
     { key: 'profile', icon: <UserOutlined />, label: 'Profile' },
-    { key: 'settings', icon: <SettingOutlined />, label: 'Settings' },
     { type: 'divider' as const },
     ...switchMenuItems,
     { type: 'divider' as const },
@@ -161,41 +160,44 @@ export function AppShell({ children }: AppShellProps) {
 
   // Logo component with gradient background
   const Logo = ({ showText = true }: { showText?: boolean }) => (
-    <div
-      style={{
-        height: layout.headerHeight,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: showText ? 'flex-start' : 'center',
-        padding: showText ? '0 16px' : 0,
-        background: `linear-gradient(135deg, ${primary[500]} 0%, ${secondary[500]} 100%)`,
-      }}
-    >
+    <Link href="/" style={{ textDecoration: 'none' }}>
       <div
         style={{
-          width: 36,
-          height: 36,
-          background: 'rgba(255,255,255,0.2)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: borderRadius.md,
+          height: layout.headerHeight,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          color: '#fff',
-          fontWeight: 700,
-          fontSize: 14,
-          flexShrink: 0,
-          letterSpacing: '0.02em',
+          justifyContent: showText ? 'flex-start' : 'center',
+          padding: showText ? '0 16px' : 0,
+          background: `linear-gradient(135deg, ${primary[500]} 0%, ${secondary[500]} 100%)`,
+          cursor: 'pointer',
         }}
       >
-        HN
+        <div
+          style={{
+            width: 36,
+            height: 36,
+            background: 'rgba(255,255,255,0.2)',
+            backdropFilter: 'blur(8px)',
+            borderRadius: borderRadius.md,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#fff',
+            fontWeight: 700,
+            fontSize: 14,
+            flexShrink: 0,
+            letterSpacing: '0.02em',
+          }}
+        >
+          HN
+        </div>
+        {showText && (
+          <Text strong style={{ marginLeft: 12, fontSize: 15, color: '#fff', letterSpacing: '-0.01em' }}>
+            Huri Noa
+          </Text>
+        )}
       </div>
-      {showText && (
-        <Text strong style={{ marginLeft: 12, fontSize: 15, color: '#fff', letterSpacing: '-0.01em' }}>
-          Huri Noa
-        </Text>
-      )}
-    </div>
+    </Link>
   )
 
   return (
