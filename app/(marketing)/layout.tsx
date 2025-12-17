@@ -1,6 +1,6 @@
 'use client'
 
-import { Layout, Typography, Space, Button } from 'antd'
+import { Layout, Typography, Space, Button, Grid } from 'antd'
 import Link from 'next/link'
 import { primary, secondary, neutral, layout, borderRadius } from '@/theme'
 
@@ -18,6 +18,9 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode
 }) {
+  const screens = Grid.useBreakpoint()
+  const isMobile = !screens.md
+
   return (
     <Layout style={{ minHeight: '100vh', background: neutral[50] }}>
       {/* ================================================================== */}
@@ -27,7 +30,7 @@ export default function MarketingLayout({
         style={{
           background: '#fff',
           height: layout.headerHeight,
-          padding: '0 24px',
+          padding: isMobile ? '0 16px' : '0 24px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -62,19 +65,19 @@ export default function MarketingLayout({
         </Link>
 
         {/* Navigation */}
-        <Space size={16}>
+        <Space size={isMobile ? 8 : 16} wrap style={{ justifyContent: 'flex-end' }}>
           <Link href="/about">
-            <Button type="text" style={{ color: neutral[600], fontWeight: 500 }}>
+            <Button size={isMobile ? 'small' : 'middle'} type="text" style={{ color: neutral[600], fontWeight: 500 }}>
               About
             </Button>
           </Link>
           <Link href="/app">
-            <Button type="primary" style={{ fontWeight: 500 }}>
+            <Button size={isMobile ? 'small' : 'middle'} type="primary" style={{ fontWeight: 500 }}>
               Uri
             </Button>
           </Link>
           <Link href="/admin">
-            <Button type="primary" style={{ fontWeight: 500 }}>
+            <Button size={isMobile ? 'small' : 'middle'} type="primary" style={{ fontWeight: 500 }}>
               Contributor
             </Button>
           </Link>

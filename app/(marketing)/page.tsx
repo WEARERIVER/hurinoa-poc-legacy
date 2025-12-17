@@ -40,7 +40,7 @@ export default function ProjectStoryPage() {
       <div style={{ 
         background: neutral[900], 
         color: '#fff', 
-        padding: '120px 24px 160px', 
+        padding: 'clamp(88px, 10vw, 120px) 24px clamp(120px, 14vw, 160px)', 
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden'
@@ -73,10 +73,10 @@ export default function ProjectStoryPage() {
               Huri Noa POC
             </Text>
           </div>
-          <Title style={{ color: '#fff', fontSize: 72, marginBottom: 24, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+          <Title style={{ color: '#fff', fontSize: 'clamp(40px, 8vw, 72px)', marginBottom: 24, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             Project Vision
           </Title>
-          <Paragraph style={{ fontSize: 24, color: neutral[300], maxWidth: 600, margin: '0 auto', lineHeight: 1.5 }}>
+          <Paragraph style={{ fontSize: 'clamp(18px, 3vw, 24px)', color: neutral[300], maxWidth: 600, margin: '0 auto', lineHeight: 1.5 }}>
             An interactive prototype demonstrating the core scheduling and coordination workflows for Huri Noa.
           </Paragraph>
         </div>
