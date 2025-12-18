@@ -328,9 +328,9 @@ export default function AboutPage() {
             <Col xs={24} md={8}>
               <Card 
                 className="hover-lift"
-                bordered={false} 
+                variant="borderless"
                 style={{ height: '100%', textAlign: 'center', boxShadow: 'none' }}
-                bodyStyle={{ padding: 0 }}
+                styles={{ body: { padding: 0 } }}
               >
                 <div style={{ 
                   width: 64, 
@@ -357,9 +357,9 @@ export default function AboutPage() {
             <Col xs={24} md={8}>
               <Card 
                 className="hover-lift"
-                bordered={false} 
+                variant="borderless"
                 style={{ height: '100%', textAlign: 'center', boxShadow: 'none' }}
-                bodyStyle={{ padding: 0 }}
+                styles={{ body: { padding: 0 } }}
               >
                 <div style={{ 
                   width: 64, 
@@ -386,9 +386,9 @@ export default function AboutPage() {
             <Col xs={24} md={8}>
               <Card 
                 className="hover-lift"
-                bordered={false} 
+                variant="borderless"
                 style={{ height: '100%', textAlign: 'center', boxShadow: 'none' }}
-                bodyStyle={{ padding: 0 }}
+                styles={{ body: { padding: 0 } }}
               >
                 <div style={{ 
                   width: 64, 
@@ -440,9 +440,9 @@ export default function AboutPage() {
               <Col xs={24} sm={12} key={index}>
                 <Card 
                   className="hover-lift"
-                  bordered={false}
+                  variant="borderless"
                   style={{ height: '100%', borderRadius: 16 }}
-                  bodyStyle={{ padding: 32 }}
+                  styles={{ body: { padding: 32 } }}
                 >
                   <div style={{ fontSize: 32, color: primary[500], marginBottom: 24 }}>{item.icon}</div>
                   <Title level={4} style={{ marginBottom: 12 }}>{item.title}</Title>
@@ -521,7 +521,7 @@ export default function AboutPage() {
 
             <Row gutter={[32, 32]}>
               <Col xs={24} md={12}>
-                <Card bordered={false} style={{ height: '100%', borderRadius: 24, border: `1px solid ${neutral[200]}` }} bodyStyle={{ padding: 40 }}>
+                <Card variant="borderless" style={{ height: '100%', borderRadius: 24, border: `1px solid ${neutral[200]}` }} styles={{ body: { padding: 40 } }}>
                   <Space align="center" style={{ marginBottom: 32 }}>
                     <div style={{ padding: 12, background: primary[50], borderRadius: 12, color: primary[600] }}>
                       <SafetyCertificateOutlined style={{ fontSize: 24 }} />
@@ -542,7 +542,7 @@ export default function AboutPage() {
                 </Card>
               </Col>
               <Col xs={24} md={12}>
-                <Card bordered={false} style={{ height: '100%', borderRadius: 24, border: `1px solid ${neutral[200]}` }} bodyStyle={{ padding: 40 }}>
+                <Card variant="borderless" style={{ height: '100%', borderRadius: 24, border: `1px solid ${neutral[200]}` }} styles={{ body: { padding: 40 } }}>
                   <Space align="center" style={{ marginBottom: 32 }}>
                     <div style={{ padding: 12, background: tertiary[50], borderRadius: 12, color: tertiary[600] }}>
                       <TeamOutlined style={{ fontSize: 24 }} />
@@ -572,7 +572,7 @@ export default function AboutPage() {
 
             <Row gutter={[24, 24]} align="middle">
               <Col xs={24} md={8}>
-                <Card style={{ background: neutral[800], border: 'none', height: '100%' }} bodyStyle={{ padding: 32 }}>
+                <Card style={{ background: neutral[800], border: 'none', height: '100%' }} styles={{ body: { padding: 32 } }}>
                   <Title level={4} style={{ color: '#fff', marginBottom: 16 }}>Manual Import</Title>
                   <Paragraph style={{ color: neutral[400], marginBottom: 0 }}>
                     Users (Contributors + Uri) are imported and linked to specific communities.
@@ -585,7 +585,7 @@ export default function AboutPage() {
               </Col>
 
               <Col xs={24} md={14}>
-                <Card style={{ background: neutral[800], border: 'none', height: '100%' }} bodyStyle={{ padding: 32 }}>
+                <Card style={{ background: neutral[800], border: 'none', height: '100%' }} styles={{ body: { padding: 32 } }}>
                   <Space direction="vertical" size="large" style={{ width: '100%' }}>
                     <div style={{ display: 'flex', gap: 20 }}>
                       <SafetyCertificateOutlined style={{ fontSize: 22, color: primary[500], marginTop: 4 }} />
@@ -633,9 +633,9 @@ export default function AboutPage() {
               <Col xs={24} md={12}>
                 <Card
                   title={<Space><CheckCircleFilled style={{ color: tertiary[500] }} /> In Scope (The Focus)</Space>}
-                  bordered
+                  variant="outlined"
                   style={{ height: '100%', borderRadius: 16, border: `1px solid ${neutral[200]}`, boxShadow: 'none' }}
-                  bodyStyle={{ padding: 32 }}
+                  styles={{ body: { padding: 32 } }}
                 >
                   <Paragraph type="secondary" style={{ marginBottom: 24 }}>
                     What we're delivering in the POC:
@@ -670,9 +670,9 @@ export default function AboutPage() {
               <Col xs={24} md={12}>
                 <Card
                   title={<Space><CloseCircleFilled style={{ color: secondary[500] }} /> Out of Scope (Deferred)</Space>}
-                  bordered
+                  variant="outlined"
                   style={{ height: '100%', borderRadius: 16, border: `1px solid ${neutral[200]}`, boxShadow: 'none' }}
-                  bodyStyle={{ padding: 32 }}
+                  styles={{ body: { padding: 32 } }}
                 >
                   <Paragraph type="secondary" style={{ marginBottom: 24 }}>
                     What we are not including — yet:
@@ -754,9 +754,9 @@ export default function AboutPage() {
               ].map((item, i) => (
                 <Col xs={24} sm={12} key={i}>
                   <Card
-                    bordered
+                    variant="outlined"
                     style={{ height: '100%', borderRadius: 16, border: `1px solid ${neutral[200]}`, boxShadow: 'none' }}
-                    bodyStyle={{ padding: 24 }}
+                    styles={{ body: { padding: 24 } }}
                   >
                     <Text strong style={{ color: neutral[800], fontSize: 16, display: 'block', marginBottom: 8 }}>{item.title}</Text>
                     <Text style={{ color: neutral[600] }}>{item.desc}</Text>
@@ -766,9 +766,9 @@ export default function AboutPage() {
             </Row>
 
             <Card
-              bordered
+              variant="outlined"
               style={{ borderRadius: 16, border: `1px solid ${neutral[200]}`, background: neutral[50], boxShadow: 'none' }}
-              bodyStyle={{ padding: 28 }}
+              styles={{ body: { padding: 28 } }}
             >
               <Title level={3} style={{ marginTop: 0, marginBottom: 12 }}>Key Questions to Resolve Next</Title>
               <Paragraph style={{ color: neutral[600], marginBottom: 20 }}>
@@ -807,9 +807,9 @@ export default function AboutPage() {
             <Col xs={24} md={12}>
               <Card
                 className="hover-lift"
-                bordered={false}
+                variant="borderless"
                 style={{ height: '100%', borderRadius: 16, background: neutral[800], textAlign: 'left' }}
-                bodyStyle={{ padding: 28 }}
+                styles={{ body: { padding: 28 } }}
               >
                 <Space direction="vertical" size={16} style={{ width: '100%' }}>
                   <Space align="center" size={12}>
@@ -844,9 +844,9 @@ export default function AboutPage() {
             <Col xs={24} md={12}>
               <Card
                 className="hover-lift"
-                bordered={false}
+                variant="borderless"
                 style={{ height: '100%', borderRadius: 16, background: neutral[800], textAlign: 'left' }}
-                bodyStyle={{ padding: 28 }}
+                styles={{ body: { padding: 28 } }}
               >
                 <Space direction="vertical" size={16} style={{ width: '100%' }}>
                   <Space align="center" size={12}>
