@@ -33,8 +33,8 @@ export default function UriProfilePage() {
         breadcrumbs={[{ label: 'Dashboard', href: '/app' }, { label: 'My Profile' }]}
       />
 
-      <PocContextCard title="POC Context: Uri Profile">
-        <strong>Why this page exists:</strong> Uri should be able to confirm who they are in the system and which kaupapa they’re linked to.
+      <PocContextCard title="MVP Context: Uri Profile">
+        <strong>Why this page exists:</strong> Uri should be able to confirm who they are in the system and which communities they're linked to.
         <br />
         <strong>Scope note:</strong> Profile editing and password changes are not included in this phase.
       </PocContextCard>

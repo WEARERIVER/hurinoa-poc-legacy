@@ -46,7 +46,7 @@ export default function AboutPage2() {
             lineHeight: 1.2
           }}>
             Bring clarity to your <br/>
-            <span style={{ color: primary[500] }}>kaupapa schedule.</span>
+            <span style={{ color: primary[500] }}>community schedule.</span>
           </Title>
           
           <Paragraph style={{ 
@@ -110,7 +110,7 @@ export default function AboutPage2() {
                 </div>
                 <Title level={4} style={{ marginBottom: 12 }}>Create events with ease</Title>
                 <Paragraph style={{ color: neutral[600], fontSize: 16 }}>
-                  Contributors can quickly create and update events for their kaupapa.
+                  Contributors can quickly create and update events for their community.
                 </Paragraph>
               </Card>
             </Col>
@@ -138,7 +138,7 @@ export default function AboutPage2() {
                 </div>
                 <Title level={4} style={{ marginBottom: 12 }}>Avoid event clashes</Title>
                 <Paragraph style={{ color: neutral[600], fontSize: 16 }}>
-                  Get a heads-up if your event overlaps with another kaupapa.
+                  Get a heads-up if your event overlaps with another community.
                 </Paragraph>
               </Card>
             </Col>
@@ -164,9 +164,9 @@ export default function AboutPage2() {
                 }}>
                   <TeamOutlined />
                 </div>
-                <Title level={4} style={{ marginBottom: 12 }}>View your upcoming kaupapa</Title>
+                <Title level={4} style={{ marginBottom: 12 }}>View your upcoming events</Title>
                 <Paragraph style={{ color: neutral[600], fontSize: 16 }}>
-                  Uri can see a personalised list of events relevant to them.
+                  Uri can see a personalised list of events from their linked communities.
                 </Paragraph>
               </Card>
             </Col>
@@ -223,8 +223,8 @@ export default function AboutPage2() {
           <Row gutter={[24, 24]}>
             {[
               "RSVP and event reminders",
-              "Calendar syncing (.ics)",
-              "Self-registration",
+              "Calendar sync (.ics) — deferred for privacy",
+              "Self-registration (with governance support)",
               "Email or mobile notifications",
               "Deeper reporting and whānau visibility"
             ].map((item, index) => (
@@ -256,7 +256,7 @@ export default function AboutPage2() {
       }}>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           <Title level={2} style={{ color: '#fff', marginBottom: 16 }}>
-            Have a kaupapa to manage?
+            Have a community to manage?
           </Title>
           <Paragraph style={{ color: neutral[400], fontSize: 18, marginBottom: 32 }}>
             Login to get started or contact us to get your group set up.

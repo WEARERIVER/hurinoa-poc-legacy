@@ -98,7 +98,7 @@ export default function MarketingLayout({
         }}
       >
         <Text style={{ color: neutral[400], fontSize: 14 }}>
-          Huri Noa — Kaupapa Coordination Platform
+          Huri Noa — Community Coordination Platform
         </Text>
         <br />
         <Text style={{ color: neutral[500], fontSize: 13, marginTop: 8, display: 'inline-block' }}>

@@ -298,25 +298,24 @@ export default function UsersPage() {
         }
       />
 
-      <PocContextCard title="POC Context: User Management">
+      <PocContextCard title="MVP Context: User Management">
         <strong>Why this page exists:</strong> The brief requires admins to be able to upload CSV or manually 
-        assign users (uri) to kaupapa. This page demonstrates the contributor's ability to manage their user list, 
-        which is the basis for the uri-to-kaupapa linkage that powers the Uri Dashboard.
+        assign users (uri) to communities. This page demonstrates the contributor's ability to manage their user list, 
+        which is the basis for the uri-to-community linkage that powers the Uri Dashboard.
         <br />
         <strong>What we're demonstrating:</strong>
         <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
-          <li>View all uri linked to this kaupapa with search and filters</li>
+          <li>View all uri linked to this community with search and filters</li>
           <li>Add new uri manually (simplified form in lieu of full CSV import)</li>
           <li>Edit uri details and toggle active/inactive status</li>
-          <li>Role assignment (contributor vs uri) — scoped to one kaupapa per the MVP assumption</li>
+          <li>Role assignment (contributor vs uri) — scoped to one community per the MVP assumption</li>
         </ul>
-        <strong>Design decisions:</strong> For the POC, we simplified the "manual import" requirement to a form-based 
-        entry rather than full CSV upload. This proves the data model and UI patterns without the complexity of file parsing. 
-        CSV upload could be added in a future phase.
+        <strong>Design decisions:</strong> For this MVP, users are added manually to ensure correctness, privacy, and alignment with community approval processes. 
+        This proves the data model and UI patterns; CSV upload could be added in a future phase.
         <br />
-        <strong>Scope note:</strong> The brief states "one contributor or uri per kaupapa for MVP". We've shown users 
-        can be linked to multiple kaupapa in the data model (for future flexibility), but the UI is scoped to managing 
-        users within the current contributor's single kaupapa.
+        <strong>Scope note:</strong> The brief states "one contributor or uri per community for MVP". We've shown users 
+        can be linked to multiple communities in the data model (for future flexibility), but the UI is scoped to managing 
+        users within the current contributor's single community.
       </PocContextCard>
 
       {/* Stats Cards */}

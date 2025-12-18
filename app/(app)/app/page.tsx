@@ -41,16 +41,16 @@ export default function AppDashboardPage() {
     <>
       <PageHeader
         title={`Kia ora, ${uri.firstName}`}
-        description="View upcoming events from your kaupapa"
+        description="View upcoming events from your communities"
         breadcrumbs={[{ label: 'Dashboard' }]}
       />
 
-      <PocContextCard title="POC Context: Uri Dashboard">
-        <strong>Why this page exists:</strong> Uri are primarily recipients — they need clear, low-effort visibility of what’s coming up across their linked kaupapa.
+      <PocContextCard title="MVP Context: Uri Dashboard">
+        <strong>Why this page exists:</strong> Uri are primarily recipients — they need clear, low-effort visibility of what's coming up across their linked communities.
         <br />
-        <strong>What we’re demonstrating:</strong> A simple overview (next event + short list) that links into the full Events page.
+        <strong>What we're demonstrating:</strong> A simple overview (next event + short list) that links into the full Events page.
         <br />
-        <strong>Scope note:</strong> No RSVPs, notifications, or calendar sync in this phase.
+        <strong>Scope note:</strong> No RSVPs, notifications, or calendar sync in this phase. This release focuses on helping Contributors coordinate events — features for Uri engagement will follow.
       </PocContextCard>
 
       {/* What's in this POC panel */}
@@ -60,13 +60,13 @@ export default function AppDashboardPage() {
       >
         <Title level={4} style={{ marginBottom: 16 }}>What you can do here</Title>
         <Paragraph style={{ color: neutral[600], marginBottom: 16 }}>
-          As a uri, you can view upcoming events from the kaupapa you're connected to:
+          As a uri, you can view upcoming events from the communities you're connected to:
         </Paragraph>
         <Space direction="vertical" size="small">
-          <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />See all upcoming events from your linked kaupapa</Text>
+          <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />See all upcoming events from your linked communities</Text>
           <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />View event details (date, time, location, description)</Text>
           <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />RSVP to events (coming later)</Text>
-          <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />Calendar sync (coming later)</Text>
+          <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />Calendar sync (.ics) — deferred for privacy</Text>
         </Space>
       </Card>
 
@@ -92,7 +92,7 @@ export default function AppDashboardPage() {
                 </div>
                 <div>
                   <Title level={5} style={{ marginBottom: 4 }}>View Events</Title>
-                  <Text style={{ color: neutral[500] }}>See what's happening across your kaupapa</Text>
+                  <Text style={{ color: neutral[500] }}>See what's happening across your communities</Text>
                 </div>
               </Space>
             </Card>

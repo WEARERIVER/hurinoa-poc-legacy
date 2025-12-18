@@ -8,8 +8,8 @@ import { PocModeProvider } from '@/lib/pocModeContext'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Huri Noa POC',
-  description: 'Huri Noa Proof of Concept for Contributor Event Coordination and Uri Calendars',
+  title: 'Huri Noa',
+  description: 'Huri Noa MVP for Contributor Event Coordination and Uri Visibility',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

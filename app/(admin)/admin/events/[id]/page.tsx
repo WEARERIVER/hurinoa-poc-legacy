@@ -212,7 +212,7 @@ export default function EventDetailPage() {
         }
       />
 
-      <PocContextCard title="POC Context: Event Detail">
+      <PocContextCard title="MVP Context: Event Detail">
         <strong>Why this page exists:</strong> Contributors need to view full event details and make changes. 
         This dedicated view page provides a clean reading experience with quick access to editing.
         <br />
@@ -236,7 +236,7 @@ export default function EventDetailPage() {
             message="This event has scheduling conflicts"
             description={
               <div>
-                <Text>The following kaupapa have events at the same time:</Text>
+                <Text>The following communities have events at the same time:</Text>
                 <ul style={{ margin: '8px 0 0', paddingLeft: 20 }}>
                   {viewClashes.map(clash => {
                     const kp = getKaupapa(clash.kaupapa)

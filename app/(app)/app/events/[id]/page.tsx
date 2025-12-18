@@ -86,7 +86,7 @@ export default function UriEventDetailPage() {
         }
       />
 
-      <PocContextCard title="POC Context: Uri Event Detail">
+      <PocContextCard title="MVP Context: Uri Event Detail">
         <strong>Why this page exists:</strong> Uri sometimes need a clean, dedicated view for one event.
         <br />
         <strong>What we’re demonstrating:</strong> A readable details page that matches the contributor pattern, but remains view-only.

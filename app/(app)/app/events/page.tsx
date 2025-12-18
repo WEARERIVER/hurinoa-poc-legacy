@@ -131,16 +131,16 @@ export default function UriEventsPage() {
     <>
       <PageHeader
         title="Events"
-        description="Events from the kaupapa you’re connected to"
+        description="Events from the communities you're connected to"
         breadcrumbs={[{ label: 'Dashboard', href: '/app' }, { label: 'Events' }]}
       />
 
-      <PocContextCard title="POC Context: Uri Events">
-        <strong>Why this page exists:</strong> Uri need a simple, read-only view of what’s coming up across their linked kaupapa.
+      <PocContextCard title="MVP Context: Uri Events">
+        <strong>Why this page exists:</strong> Uri need a simple, read-only view of what's coming up across their linked communities.
         <br />
-        <strong>What we’re demonstrating:</strong> A clear card-based list and a calendar view, with quick preview and a full page for reading.
+        <strong>What we're demonstrating:</strong> A clear card-based list and a calendar view, with quick preview and a full page for reading.
         <br />
-        <strong>Scope note:</strong> No RSVP, notifications, or calendar export in this phase.
+        <strong>Scope note:</strong> No RSVP, notifications, or calendar export (.ics deferred for privacy) in this phase.
       </PocContextCard>
 
       <Card bordered={false} style={{ marginBottom: layout.cardGap }}>
@@ -156,7 +156,7 @@ export default function UriEventsPage() {
               />
               <Select
                 mode="multiple"
-                placeholder="Show all kaupapa"
+                placeholder="Show all communities"
                 style={{ width: 250 }}
                 value={kaupapaFilter}
                 onChange={(v) => setKaupapaFilter(v)}

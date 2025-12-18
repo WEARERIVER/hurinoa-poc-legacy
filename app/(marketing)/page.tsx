@@ -114,7 +114,7 @@ export default function AboutPage() {
             color: neutral[900]
           }}>
             Bring clarity to your <br/>
-            <span className="text-gradient">kaupapa schedule.</span>
+            <span className="text-gradient">community schedule.</span>
           </Title>
           
           <Paragraph className="animate-fade-up delay-200" style={{ 
@@ -131,13 +131,13 @@ export default function AboutPage() {
           <div className="animate-fade-up delay-300" style={{ maxWidth: 760, margin: '-28px auto 40px' }}>
             <Space direction="vertical" size={8} style={{ width: '100%' }}>
               <Text style={{ color: neutral[600] }}>
-                <Text strong>Current phase:</Text> MVP (admin-first coordination POC).
+                <Text strong>Current phase:</Text> MVP (admin-first coordination).
               </Text>
               <Text style={{ color: neutral[600] }}>
                 <Text strong>Contributor</Text> creates and manages events for a community. <Text strong>Uri</Text> views events relevant to them.
               </Text>
               <Text style={{ color: neutral[600] }}>
-                Designed to protect event visibility and community boundaries; access is permissioned.
+                This early release focuses on helping Contributors coordinate events. Features for Uri engagement will follow once this foundation is proven.
               </Text>
             </Space>
           </div>
@@ -202,7 +202,7 @@ export default function AboutPage() {
                 <span style={{ color: primary[500] }}>Confidence.</span>
               </Title>
               <Paragraph style={{ fontSize: 'clamp(16px, 3vw, 20px)', color: neutral[600], lineHeight: 1.8 }}>
-                No more spreadsheets or group chat chaos. Contributors can quickly create and update events for their kaupapa in a dedicated, purpose-built space.
+                No more spreadsheets or group chat chaos. Contributors can quickly create and update events for their community in a dedicated, purpose-built space.
               </Paragraph>
               <Space direction="vertical" size="middle" style={{ marginTop: 24 }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -264,7 +264,7 @@ export default function AboutPage() {
                 <span style={{ color: secondary[500] }}>Scheduling.</span>
               </Title>
               <Paragraph style={{ fontSize: 'clamp(16px, 3vw, 20px)', color: neutral[600], lineHeight: 1.8 }}>
-                Avoid the frustration of double-bookings. Huri Noa gives you a heads-up if your event overlaps with another kaupapa, helping us all work better together.
+                Avoid the frustration of double-bookings. Huri Noa gives you a heads-up if your event overlaps with another community, helping us all work better together.
               </Paragraph>
               <Space direction="vertical" size="middle" style={{ marginTop: 24 }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -348,7 +348,7 @@ export default function AboutPage() {
                 </div>
                 <Title level={4} style={{ marginBottom: 12 }}>Create events with ease</Title>
                 <Paragraph style={{ color: neutral[600], fontSize: 16 }}>
-                  Contributors can quickly create and update events for their kaupapa.
+                  Contributors can quickly create and update events for their community.
                 </Paragraph>
               </Card>
             </Col>
@@ -377,7 +377,7 @@ export default function AboutPage() {
                 </div>
                 <Title level={4} style={{ marginBottom: 12 }}>Avoid event clashes</Title>
                 <Paragraph style={{ color: neutral[600], fontSize: 16 }}>
-                  Get a heads-up if your event overlaps with another kaupapa.
+                  Get a heads-up if your event overlaps with another community.
                 </Paragraph>
               </Card>
             </Col>
@@ -404,9 +404,9 @@ export default function AboutPage() {
                 }}>
                   <TeamOutlined />
                 </div>
-                <Title level={4} style={{ marginBottom: 12 }}>View your upcoming kaupapa</Title>
+                <Title level={4} style={{ marginBottom: 12 }}>View your upcoming events</Title>
                 <Paragraph style={{ color: neutral[600], fontSize: 16 }}>
-                  Uri can see a personalised list of events relevant to them.
+                  Uri can see a personalised list of events from their linked communities.
                 </Paragraph>
               </Card>
             </Col>
@@ -461,7 +461,7 @@ export default function AboutPage() {
       {/* ================================================================== */}
       <FullWidthDisclosure
         id="our-vision"
-        eyebrow="HURI NOA POC"
+        eyebrow="HURI NOA MVP"
         title="Our Vision"
         subtitle="For Funders - App Scope & Vision"
         description="Expand this section for a clear view of MVP scope, why certain features are deferred, the key risks to resolve, and what further funding unlocks."
@@ -481,15 +481,15 @@ export default function AboutPage() {
           >
             <Row gutter={[48, 48]} align="middle">
               <Col xs={24} md={10}>
-                <Title level={3} style={{ fontSize: 32, marginBottom: 16 }}>About this POC</Title>
+                <Title level={3} style={{ fontSize: 32, marginBottom: 16 }}>About this MVP</Title>
                 <div style={{ width: 60, height: 4, background: primary[500], borderRadius: 2 }} />
               </Col>
               <Col xs={24} md={14}>
                 <Paragraph style={{ fontSize: 18, color: neutral[600], lineHeight: 1.8, marginBottom: 24 }}>
-                  This early release is designed to solve one specific problem: <Text strong>helping contributors avoid scheduling clashes.</Text>
+                  This early release is designed to solve one specific problem: <b>help contributors avoid schedule clashes</b>.
                 </Paragraph>
                 <Paragraph style={{ fontSize: 18, color: neutral[600], lineHeight: 1.8, marginBottom: 0 }}>
-                  We deliberately chose not to build complex calendar sync for uri yet. Instead, we focused on giving contributors the visibility they need to plan with confidence.
+                  Advanced calendar sync is deferred, because .ics feeds are inherently shareable and pose privacy risks. This requires more careful consideration.
                 </Paragraph>
               </Col>
             </Row>
@@ -500,11 +500,11 @@ export default function AboutPage() {
         <div style={{ padding: '64px 24px 120px', textAlign: 'center', background: '#fff' }}>
           <div style={{ maxWidth: 800, margin: '0 auto' }}>
             <BulbOutlined style={{ fontSize: 48, color: primary[500], marginBottom: 32 }} />
-            <Title level={2} style={{ fontSize: 40, fontWeight: 400, fontStyle: 'italic', marginBottom: 32, lineHeight: 1.4 }}>
-              “The biggest problem is when two kaupapa pick the same date. We just need to see what’s already happening.”
+            <Title level={2} style={{ fontSize: 32, fontWeight: 400, fontStyle: 'italic', marginBottom: 32, lineHeight: 1.4 }}>
+              "The biggest problem is when communities pick the same date. We need to see what's already happening."
             </Title>
             <Text style={{ fontSize: 16, fontWeight: 600, color: neutral[500], textTransform: 'uppercase', letterSpacing: 1 }}>
-              — Mina Mathieson. Scoping Workshop, 1 Dec 2025
+              — Mina Mathieson, Kia Rewa Foundation
             </Text>
           </div>
         </div>
@@ -515,7 +515,7 @@ export default function AboutPage() {
             <div style={{ textAlign: 'center', marginBottom: 64 }}>
               <Title level={2} style={{ marginBottom: 8 }}>MVP User Journeys (Current Phase)</Title>
               <Paragraph style={{ fontSize: 18, color: neutral[500], marginBottom: 0 }}>
-                These are the journeys included in the MVP. They expand in the next phase post-funding.
+                These are the journeys included in the MVP. These will expand in the next phase post-funding.
               </Paragraph>
             </div>
 
@@ -534,7 +534,7 @@ export default function AboutPage() {
                     current={1}
                     items={[
                       { title: 'Login', description: 'Access the contributor workspace' },
-                      { title: 'Create Event', description: 'Enter details for upcoming kaupapa' },
+                      { title: 'Create Event', description: 'Enter details for upcoming community event' },
                       { title: 'Clash Detection', description: 'See overlaps as a visibility warning' },
                       { title: 'Publish', description: 'Event becomes visible to relevant uri' },
                     ]}
@@ -610,12 +610,6 @@ export default function AboutPage() {
                 </Card>
               </Col>
             </Row>
-
-            <div style={{ textAlign: 'center', marginTop: 28 }}>
-              <Text style={{ color: neutral[500] }}>
-                * No calendar sync or RSVP in this phase (by design)
-              </Text>
-            </div>
           </div>
         </div>
 
@@ -638,7 +632,7 @@ export default function AboutPage() {
                   styles={{ body: { padding: 32 } }}
                 >
                   <Paragraph type="secondary" style={{ marginBottom: 24 }}>
-                    What we're delivering in the POC:
+                    What we're delivering in the MVP:
                   </Paragraph>
                   <Space direction="vertical" size="middle" style={{ width: '100%' }}>
                     <div style={{ display: 'flex', gap: 12 }}>
@@ -669,7 +663,7 @@ export default function AboutPage() {
 
               <Col xs={24} md={12}>
                 <Card
-                  title={<Space><CloseCircleFilled style={{ color: secondary[500] }} /> Out of Scope (Deferred)</Space>}
+                  title={<Space><CloseCircleFilled style={{ color: secondary[500] }} /> Out of Scope (Post Funding)</Space>}
                   variant="outlined"
                   style={{ height: '100%', borderRadius: 16, border: `1px solid ${neutral[200]}`, boxShadow: 'none' }}
                   styles={{ body: { padding: 32 } }}
@@ -693,8 +687,8 @@ export default function AboutPage() {
                   </Space>
                   <Divider style={{ margin: '24px 0' }} />
                   <div style={{ background: neutral[100], padding: 16, borderRadius: 8, fontStyle: 'italic', color: neutral[600] }}>
-                    "It's really important that events across different rōpū aren't public to everyone... Uri only need to see what's relevant to them."
-                    <div style={{ marginTop: 8, fontSize: 12, fontWeight: 600, fontStyle: 'normal' }}>— Mina Mathieson</div>
+                    "It's important that events across different communities aren't public. Uri need to see what's relevant to them..."
+                    <div style={{ marginTop: 8, fontSize: 12, fontWeight: 600, fontStyle: 'normal' }}>— Mina Mathieson, Kia Rewa Foundation</div>
                   </div>
                 </Card>
               </Col>
@@ -717,7 +711,6 @@ export default function AboutPage() {
                 { title: 'Scope creep', desc: 'Strict MVP boundaries now; roadmap for later phases.' },
                 { title: 'Permissions complexity', desc: 'Prove coordination first; design a permissions model next (community + role + approval pathways).' },
                 { title: 'Privacy/security (shareable calendars)', desc: 'No universal .ics in MVP; access remains permissioned via login.' },
-                { title: 'Expectation drift', desc: 'Explicit “Now vs Next” messaging; clear success criteria and workshop check-ins.' },
                 { title: 'Adoption risk', desc: 'Start with contributors; minimise workflow friction; validate with pilot communities.' },
               ].map((risk, i) => (
                 <Col xs={24} md={12} key={i}>
@@ -750,7 +743,6 @@ export default function AboutPage() {
                 { title: 'Secure onboarding', desc: 'Self-registration where appropriate, backed by governance.' },
                 { title: 'Controlled calendar delivery', desc: 'A privacy-safe model (if/when .ics is appropriate).' },
                 { title: 'RSVP / reminders', desc: 'Only if validated by pilot communities.' },
-                { title: 'Scale to more communities', desc: 'Extend to additional groups with support.' },
               ].map((item, i) => (
                 <Col xs={24} sm={12} key={i}>
                   <Card
@@ -758,8 +750,13 @@ export default function AboutPage() {
                     style={{ height: '100%', borderRadius: 16, border: `1px solid ${neutral[200]}`, boxShadow: 'none' }}
                     styles={{ body: { padding: 24 } }}
                   >
-                    <Text strong style={{ color: neutral[800], fontSize: 16, display: 'block', marginBottom: 8 }}>{item.title}</Text>
-                    <Text style={{ color: neutral[600] }}>{item.desc}</Text>
+                    <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                      <CheckCircleOutlined style={{ color: tertiary[500], fontSize: 20, marginTop: 2 }} />
+                      <div>
+                        <Text strong style={{ color: neutral[800], fontSize: 16, display: 'block', marginBottom: 8 }}>{item.title}</Text>
+                        <Text style={{ color: neutral[600] }}>{item.desc}</Text>
+                      </div>
+                    </div>
                   </Card>
                 </Col>
               ))}
@@ -770,9 +767,12 @@ export default function AboutPage() {
               style={{ borderRadius: 16, border: `1px solid ${neutral[200]}`, background: neutral[50], boxShadow: 'none' }}
               styles={{ body: { padding: 28 } }}
             >
-              <Title level={3} style={{ marginTop: 0, marginBottom: 12 }}>Key Questions to Resolve Next</Title>
+              <Space align="center" style={{ marginBottom: 12 }}>
+                <BulbOutlined style={{ color: secondary[500], fontSize: 24 }} />
+                <Title level={3} style={{ margin: 0 }}>Key Considerations</Title>
+              </Space>
               <Paragraph style={{ color: neutral[600], marginBottom: 20 }}>
-                The next phase clarifies the decisions required to deliver safely and at scale.
+                The next phase clarifies key decisions required to deliver safely and at scale:
               </Paragraph>
               <Space direction="vertical" size={12} style={{ width: '100%' }}>
                 <Text style={{ color: neutral[700] }}>• Advanced permissions (who can see what, and when)</Text>
@@ -787,7 +787,7 @@ export default function AboutPage() {
       </FullWidthDisclosure>
 
       {/* ================================================================== */}
-      {/* EXPLORE THE POC                                                    */}
+      {/* EXPLORE THE MVP                                                    */}
       {/* ================================================================== */}
       <div style={{ 
         padding: '80px 24px', 
@@ -797,7 +797,7 @@ export default function AboutPage() {
       }}>
         <div style={{ maxWidth: 1000, margin: '0 auto' }}>
           <Title level={2} style={{ color: '#fff', marginBottom: 12 }}>
-            Explore the POC
+            Explore the MVP
           </Title>
           <Paragraph style={{ color: neutral[400], fontSize: 18, marginBottom: 40 }}>
             Jump into the story, or open the Contributor and Uri experiences.
@@ -830,7 +830,7 @@ export default function AboutPage() {
                     <Text style={{ color: '#fff', fontSize: 16, fontWeight: 600 }}>Uri</Text>
                   </Space>
                   <Text style={{ color: neutral[400] }}>
-                    View the events and kaupapa relevant to you.
+                    View the events from your linked communities.
                   </Text>
                   <Link href="/app" style={{ alignSelf: 'flex-start' }}>
                     <Button type="primary">

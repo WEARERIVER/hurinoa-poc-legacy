@@ -46,12 +46,12 @@ export default function ProfilePage() {
         breadcrumbs={[{ label: 'Dashboard', href: '/admin' }, { label: 'My Profile' }]}
       />
 
-      <PocContextCard title="POC Context: Profile Page">
+      <PocContextCard title="MVP Context: Profile Page">
         <strong>Why this page exists:</strong> Contributors need to see their identity and confirm which 
-        kaupapa they are managing. This builds trust and provides clarity about their role in the system.
+        community they are managing. This builds trust and provides clarity about their role in the system.
         <br />
         <strong>What we're demonstrating:</strong> A simple, read-only profile view showing the contributor's 
-        details and their linked kaupapa. This confirms authentication context without adding complexity.
+        details and their linked community. This confirms authentication context without adding complexity.
         <br />
         <strong>Scope note:</strong> For the MVP, profile editing and password changes are not included. 
         This page is purely informational — user management happens through the admin import process.
