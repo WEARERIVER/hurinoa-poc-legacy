@@ -832,9 +832,9 @@ export default function AboutPage() {
                   <Text style={{ color: neutral[400] }}>
                     View the events from your linked communities.
                   </Text>
-                  <Link href="/app" style={{ alignSelf: 'flex-start' }}>
+                  <Link href="/login?role=uri" style={{ alignSelf: 'flex-start' }}>
                     <Button type="primary">
-                      Open Uri <ArrowRightOutlined />
+                      Uri Login <ArrowRightOutlined />
                     </Button>
                   </Link>
                 </Space>
@@ -869,9 +869,9 @@ export default function AboutPage() {
                   <Text style={{ color: neutral[400] }}>
                     Create and manage events, with soft clash visibility.
                   </Text>
-                  <Link href="/admin" style={{ alignSelf: 'flex-start' }}>
+                  <Link href="/login?role=contributor" style={{ alignSelf: 'flex-start' }}>
                     <Button type="primary">
-                      Open Contributor <ArrowRightOutlined />
+                      Contributor Login <ArrowRightOutlined />
                     </Button>
                   </Link>
                 </Space>

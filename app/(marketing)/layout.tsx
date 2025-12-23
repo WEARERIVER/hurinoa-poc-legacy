@@ -67,14 +67,14 @@ export default function MarketingLayout({
 
         {/* Navigation */}
         <Space size={isMobile ? 8 : 16} wrap style={{ justifyContent: 'flex-end' }}>
-          <Link href="/app">
+          <Link href="/login?role=uri">
             <Button size={isMobile ? 'small' : 'middle'} type="primary" style={{ fontWeight: 500 }}>
-              Open Uri <ArrowRightOutlined />
+              Uri Login <ArrowRightOutlined />
             </Button>
           </Link>
-          <Link href="/admin">
+          <Link href="/login?role=contributor">
             <Button size={isMobile ? 'small' : 'middle'} type="primary" style={{ fontWeight: 500 }}>
-              Open Contributor <ArrowRightOutlined />
+              Contributor Login <ArrowRightOutlined />
             </Button>
           </Link>
         </Space>
