@@ -10,7 +10,8 @@ interface PocModeContextType {
 const PocModeContext = createContext<PocModeContextType | undefined>(undefined)
 
 export function PocModeProvider({ children }: { children: ReactNode }) {
-  const [showPocHelpers, setShowPocHelpers] = useState(true)
+  // Default to OFF for client demos — toggle via header switch
+  const [showPocHelpers, setShowPocHelpers] = useState(false)
 
   const togglePocHelpers = () => setShowPocHelpers(prev => !prev)
 

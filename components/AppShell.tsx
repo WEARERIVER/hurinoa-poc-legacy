@@ -128,7 +128,7 @@ export function AppShell({ children }: AppShellProps) {
   const switchMenuItems = (['contributor', 'uri'] as UserType[]).map(type => ({
     key: `switch-${type}`,
     icon: <SwapOutlined />,
-    label: `Switch to ${getUserTypeLabel(type)}`,
+    label: `${getUserTypeLabel(type)} Dashboard`,
   }))
 
   const userMenuItems = [
@@ -326,10 +326,10 @@ export function AppShell({ children }: AppShellProps) {
             </div>
           </div>
 
-          {/* Right side: POC Toggle + User Avatar */}
+          {/* Right side: Context Toggle + User Avatar */}
           <Space size={isMobile ? 8 : 12}>
-            {/* POC Helpers Toggle */}
-            <Tooltip title="Show POC Context">
+            {/* MVP Context Toggle */}
+            <Tooltip title={showPocHelpers ? "Hide MVP Context" : "Show MVP Context"}>
               <div 
                 style={{ 
                   display: 'flex', 

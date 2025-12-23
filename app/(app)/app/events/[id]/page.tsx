@@ -50,7 +50,7 @@ export default function UriEventDetailPage() {
             { label: 'Not Found' },
           ]}
         />
-        <Card bordered={false}>
+        <Card variant="borderless">
           <Alert
             type="error"
             message="Event not found"
@@ -86,13 +86,13 @@ export default function UriEventDetailPage() {
         }
       />
 
-      <PocContextCard title="MVP Context: Uri Event Detail">
-        <strong>Why this page exists:</strong> Uri sometimes need a clean, dedicated view for one event.
-        <br />
-        <strong>What we’re demonstrating:</strong> A readable details page that matches the contributor pattern, but remains view-only.
+      <PocContextCard title="About This Page">
+        This page shows the full details of a single event. Uri can view the date, time, location, and description — giving them all the information they need to attend.
+        <br /><br />
+        <strong>Coming later:</strong> RSVP functionality and calendar export will be added in future releases.
       </PocContextCard>
 
-      <Card bordered={false}>
+      <Card variant="borderless">
         <Space wrap size={8} style={{ marginBottom: 16 }}>
           {kaupapa && <Tag>{kaupapa.name}</Tag>}
           <Text type="secondary">{dayjs(event.date).format('dddd, D MMMM YYYY')}</Text>

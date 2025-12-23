@@ -212,22 +212,13 @@ export default function EventDetailPage() {
         }
       />
 
-      <PocContextCard title="MVP Context: Event Detail">
-        <strong>Why this page exists:</strong> Contributors need to view full event details and make changes. 
-        This dedicated view page provides a clean reading experience with quick access to editing.
-        <br />
-        <strong>What we're demonstrating:</strong>
-        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
-          <li>View full event details in a clean, readable format</li>
-          <li>Quick edit via modal (same form as create)</li>
-          <li>Clash warnings shown if conflicts exist</li>
-          <li>Delete with confirmation modal</li>
-        </ul>
-        <strong>Design decisions:</strong> We use a modal for editing (same as create) to keep the experience 
-        consistent and reduce code duplication. The view page focuses on readability.
+      <PocContextCard title="About This Page">
+        This page shows the full details of an event. Contributors can view all information, edit the event, or delete it if needed.
+        <br /><br />
+        <strong>What's included:</strong> Full event details, quick edit via modal, clash warnings if conflicts exist, and delete with confirmation.
       </PocContextCard>
 
-      <Card bordered={false}>
+      <Card variant="borderless">
         {/* Clash Warning */}
         {viewClashes.length > 0 && (
           <Alert

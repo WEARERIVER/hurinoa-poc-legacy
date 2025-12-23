@@ -46,21 +46,16 @@ export default function ProfilePage() {
         breadcrumbs={[{ label: 'Dashboard', href: '/admin' }, { label: 'My Profile' }]}
       />
 
-      <PocContextCard title="MVP Context: Profile Page">
-        <strong>Why this page exists:</strong> Contributors need to see their identity and confirm which 
-        community they are managing. This builds trust and provides clarity about their role in the system.
-        <br />
-        <strong>What we're demonstrating:</strong> A simple, read-only profile view showing the contributor's 
-        details and their linked community. This confirms authentication context without adding complexity.
-        <br />
-        <strong>Scope note:</strong> For the MVP, profile editing and password changes are not included. 
-        This page is purely informational — user management happens through the admin import process.
+      <PocContextCard title="About This Page">
+        This is where Contributors can view their profile and see which community they manage. This helps them confirm their identity in the system and understand their role.
+        <br /><br />
+        <strong>Coming later:</strong> Profile editing and password management will be available in future releases. For now, updates are managed by the system administrator.
       </PocContextCard>
 
       <Row gutter={[layout.cardGap, layout.cardGap]}>
         {/* Profile Card */}
         <Col xs={24} lg={16}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             {/* Profile Header */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 24 }}>
               <Avatar 
@@ -99,10 +94,12 @@ export default function ProfilePage() {
               Contact Information
             </Title>
             <Descriptions 
-              column={{ xs: 1, sm: 2 }} 
+              column={1}
               size="small"
-              labelStyle={{ color: neutral[500], fontWeight: 500 }}
-              contentStyle={{ color: neutral[700] }}
+              styles={{
+                label: { color: neutral[500], fontWeight: 500 },
+                content: { color: neutral[700] }
+              }}
             >
               <Descriptions.Item label={<><MailOutlined style={{ marginRight: 8 }} />Email</>}>
                 {profileData.email}
@@ -127,14 +124,14 @@ export default function ProfilePage() {
               </Button>
             </Space>
             <Paragraph type="secondary" style={{ marginTop: 12, fontSize: 13 }}>
-              Profile editing is managed by your administrator in this version.
+              Profile editing is managed by the system administrator in this version.
             </Paragraph>
           </Card>
         </Col>
 
         {/* Kaupapa Card */}
         <Col xs={24} lg={8}>
-          <Card bordered={false} style={{ marginBottom: layout.cardGap }}>
+          <Card variant="borderless" style={{ marginBottom: layout.cardGap }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
               <div 
                 style={{ 
@@ -150,19 +147,19 @@ export default function ProfilePage() {
                 <TeamOutlined style={{ fontSize: 20, color: primary[500] }} />
               </div>
               <div>
-                <Text type="secondary" style={{ fontSize: 12, display: 'block' }}>Your Kaupapa</Text>
+                <Text type="secondary" style={{ fontSize: 13, display: 'block' }}>Your Community</Text>
                 <Text strong style={{ fontSize: 16 }}>{kaupapa?.name}</Text>
               </div>
             </div>
             <Divider style={{ margin: '12px 0' }} />
             <Text type="secondary" style={{ fontSize: 13 }}>
-              You are a contributor for this kaupapa. You can create and manage events, 
+              You are a contributor for this community. You can create and manage events, 
               and view uri linked to your group.
             </Text>
           </Card>
 
           {/* Quick Stats */}
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Title level={5} style={{ marginBottom: 16, color: neutral[600] }}>
               Your Activity
             </Title>

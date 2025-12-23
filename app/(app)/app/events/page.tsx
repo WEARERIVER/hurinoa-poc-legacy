@@ -135,15 +135,15 @@ export default function UriEventsPage() {
         breadcrumbs={[{ label: 'Dashboard', href: '/app' }, { label: 'Events' }]}
       />
 
-      <PocContextCard title="MVP Context: Uri Events">
-        <strong>Why this page exists:</strong> Uri need a simple, read-only view of what's coming up across their linked communities.
+      <PocContextCard title="About This Page">
+        This is where Uri browse all upcoming events from the communities they're connected to. The MVP provides a read-only view — Uri receive event information, but do not manage or edit events.
+        <br /><br />
+        <strong>What's included:</strong> List and calendar views, search and filter by community, quick preview of event details.
         <br />
-        <strong>What we're demonstrating:</strong> A clear card-based list and a calendar view, with quick preview and a full page for reading.
-        <br />
-        <strong>Scope note:</strong> No RSVP, notifications, or calendar export (.ics deferred for privacy) in this phase.
+        <strong>Coming later:</strong> RSVP, notifications, and calendar sync are planned for future releases.
       </PocContextCard>
 
-      <Card bordered={false} style={{ marginBottom: layout.cardGap }}>
+      <Card variant="borderless" style={{ marginBottom: layout.cardGap }}>
         <Row gutter={16} align="middle" justify="space-between">
           <Col>
             <Space size={12} wrap>
@@ -181,11 +181,11 @@ export default function UriEventsPage() {
       </Card>
 
       {filteredEvents.length === 0 ? (
-        <Card bordered={false}>
+        <Card variant="borderless">
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No events match your filters" />
         </Card>
       ) : viewMode === 'calendar' ? (
-        <Card bordered={false}>
+        <Card variant="borderless">
           <EventCalendar
             events={calendarEvents}
             onEventClick={(eventId) => {
@@ -202,7 +202,7 @@ export default function UriEventsPage() {
             return (
               <Card
                 key={event.id}
-                bordered={false}
+                variant="borderless"
                 hoverable
                 onClick={() => openPreview(event)}
               >
@@ -257,7 +257,7 @@ export default function UriEventsPage() {
           <Space>
             {previewEvent && (
               <Link href={`/app/events/${previewEvent.id}`}>
-                <Button type="primary">Open full page</Button>
+                <Button type="primary">Open Event</Button>
               </Link>
             )}
             <Button onClick={closePreview}>Close</Button>

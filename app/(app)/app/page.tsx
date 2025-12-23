@@ -45,65 +45,56 @@ export default function AppDashboardPage() {
         breadcrumbs={[{ label: 'Dashboard' }]}
       />
 
-      <PocContextCard title="MVP Context: Uri Dashboard">
-        <strong>Why this page exists:</strong> Uri are primarily recipients — they need clear, low-effort visibility of what's coming up across their linked communities.
-        <br />
-        <strong>What we're demonstrating:</strong> A simple overview (next event + short list) that links into the full Events page.
-        <br />
-        <strong>Scope note:</strong> No RSVPs, notifications, or calendar sync in this phase. This release focuses on helping Contributors coordinate events — features for Uri engagement will follow.
+      <PocContextCard title="About This Page">
+        This is the home screen for Uri when they log in. From here they can see upcoming events from the communities they're connected to, and quickly access the full event list.
+        <br /><br />
+        <strong>What's included:</strong> Overview of the next event, a quick list of what's coming up, and easy navigation to browse all events.
       </PocContextCard>
 
-      {/* What's in this POC panel */}
+      {/* Hero Action Button */}
       <Card 
-        bordered={false}
-        style={{ marginBottom: layout.sectionGap }}
+        variant="borderless"
+        style={{ 
+          marginBottom: layout.sectionGap, 
+          background: `linear-gradient(135deg, ${tertiary[50]} 0%, ${secondary[50]} 100%)`,
+          borderRadius: 16
+        }}
       >
-        <Title level={4} style={{ marginBottom: 16 }}>What you can do here</Title>
-        <Paragraph style={{ color: neutral[600], marginBottom: 16 }}>
-          As a uri, you can view upcoming events from the communities you're connected to:
-        </Paragraph>
-        <Space direction="vertical" size="small">
-          <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />See all upcoming events from your linked communities</Text>
-          <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />View event details (date, time, location, description)</Text>
-          <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />RSVP to events (coming later)</Text>
-          <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />Calendar sync (.ics) — deferred for privacy</Text>
-        </Space>
+        <Row align="middle" justify="space-between" gutter={[16, 16]}>
+          <Col xs={24} md={16}>
+            <Space size={16} align="center">
+              <div style={{ 
+                width: 56, 
+                height: 56, 
+                background: '#fff', 
+                borderRadius: 12, 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+              }}>
+                <CalendarOutlined style={{ fontSize: 28, color: tertiary[500] }} />
+              </div>
+              <div>
+                <Title level={4} style={{ marginBottom: 4 }}>Your Events</Title>
+                <Text style={{ color: neutral[600], fontSize: 15 }}>See what's happening across your communities</Text>
+              </div>
+            </Space>
+          </Col>
+          <Col xs={24} md={8} style={{ textAlign: 'right' }}>
+            <Link href="/app/events">
+              <Button type="primary" size="large" icon={<EyeOutlined />}>
+                View All Events
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </Card>
-
-      {/* Quick Actions */}
-      <Row gutter={[layout.cardGap, layout.cardGap]} style={{ marginBottom: layout.sectionGap }}>
-        <Col xs={24}>
-          <Link href="/app/events" style={{ display: 'block' }}>
-            <Card 
-              hoverable 
-              bordered={false}
-            >
-              <Space>
-                <div style={{ 
-                  width: 48, 
-                  height: 48, 
-                  background: tertiary[50], 
-                  borderRadius: borderRadius.lg, 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center' 
-                }}>
-                  <EyeOutlined style={{ fontSize: 24, color: tertiary[500] }} />
-                </div>
-                <div>
-                  <Title level={5} style={{ marginBottom: 4 }}>View Events</Title>
-                  <Text style={{ color: neutral[500] }}>See what's happening across your communities</Text>
-                </div>
-              </Space>
-            </Card>
-          </Link>
-        </Col>
-      </Row>
 
       {/* Next Up */}
       <Row gutter={[layout.cardGap, layout.cardGap]} style={{ marginBottom: layout.sectionGap }}>
         <Col xs={24} lg={12}>
-          <Card bordered={false}>
+          <Card variant="borderless" style={{ height: '100%' }}>
             <Title level={4} style={{ marginBottom: 16 }}>Next Up</Title>
             {!nextEvent ? (
               <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No upcoming events" />
@@ -139,7 +130,7 @@ export default function AppDashboardPage() {
         </Col>
 
         <Col xs={24} lg={12}>
-          <Card bordered={false}>
+          <Card variant="borderless" style={{ height: '100%' }}>
             <Space style={{ width: '100%', justifyContent: 'space-between' }}>
               <Title level={4} style={{ marginBottom: 0 }}>Coming Soon</Title>
               <Link href="/app/events">
@@ -161,7 +152,7 @@ export default function AppDashboardPage() {
                     <List.Item
                       actions={[
                         <Link key="open" href={`/app/events/${event.id}`}>
-                          Open
+                          <Button type="link" size="small">View</Button>
                         </Link>,
                       ]}
                     >
@@ -186,6 +177,40 @@ export default function AppDashboardPage() {
           </Card>
         </Col>
       </Row>
+
+      {/* Huri Noa v1 Features */}
+      <Card 
+        variant="borderless"
+        style={{ 
+          marginTop: layout.sectionGap,
+          background: `linear-gradient(135deg, ${primary[50]} 0%, ${secondary[50]} 100%)`,
+          borderRadius: 16,
+          border: `1px solid ${neutral[200]}`
+        }}
+      >
+        <Title level={4} style={{ marginBottom: 8 }}>Huri Noa v1 — What's Included</Title>
+        <Paragraph style={{ color: neutral[600], marginBottom: 24, fontSize: 15 }}>
+          This is an early release focused on event visibility for Uri.
+        </Paragraph>
+        <Row gutter={[32, 24]}>
+          <Col xs={24} md={12}>
+            <Text strong style={{ fontSize: 14, color: secondary[600], display: 'block', marginBottom: 12 }}>What you can do now</Text>
+            <Space direction="vertical" size={10}>
+              <Text style={{ fontSize: 15 }}><CheckCircleOutlined style={{ color: secondary[500], marginRight: 10 }} />Browse upcoming events from your communities</Text>
+              <Text style={{ fontSize: 15 }}><CheckCircleOutlined style={{ color: secondary[500], marginRight: 10 }} />View event details (date, time, location)</Text>
+              <Text style={{ fontSize: 15 }}><CheckCircleOutlined style={{ color: secondary[500], marginRight: 10 }} />List and calendar views</Text>
+            </Space>
+          </Col>
+          <Col xs={24} md={12}>
+            <Text strong style={{ fontSize: 14, color: neutral[500], display: 'block', marginBottom: 12 }}>What's coming later</Text>
+            <Space direction="vertical" size={10}>
+              <Text style={{ fontSize: 15, color: neutral[500] }}><ClockCircleOutlined style={{ marginRight: 10 }} />RSVP to events</Text>
+              <Text style={{ fontSize: 15, color: neutral[500] }}><ClockCircleOutlined style={{ marginRight: 10 }} />Notifications and reminders</Text>
+              <Text style={{ fontSize: 15, color: neutral[500] }}><ClockCircleOutlined style={{ marginRight: 10 }} />Calendar sync</Text>
+            </Space>
+          </Col>
+        </Row>
+      </Card>
     </>
   )
 }

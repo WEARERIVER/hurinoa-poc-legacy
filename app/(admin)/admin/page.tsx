@@ -34,7 +34,7 @@ export default function AdminDashboardPage() {
         description="View and manage your community events"
         breadcrumbs={[{ label: 'Dashboard' }]}
         actions={
-          <Link href="/admin/events">
+          <Link href="/admin/events?create=true">
             <Button 
               type="primary" 
               icon={<PlusOutlined />}
@@ -46,23 +46,16 @@ export default function AdminDashboardPage() {
         }
       />
 
-      <PocContextCard title="MVP Context: Contributor Dashboard">
-        <strong>Why this page exists:</strong> The MVP brief identified that <em>contributors bear the operational burden</em> of 
-        event coordination. This dashboard is their home base — a clear entry point to the scheduling tools they need most.
-        <br />
-        <strong>What we're demonstrating:</strong> Quick access to event creation, at-a-glance stats on upcoming events, 
-        and clear navigation to manage events or users. The stats shown (Upcoming, This Week, Past) help contributors 
-        gauge their workload without drilling into lists.
-        <br />
-        <strong>Design decisions:</strong> We kept this screen deliberately minimal — no analytics, no complex widgets. 
-        The brief explicitly deferred reporting and dashboarding. The "What's in this MVP" panel helps the client 
-        see what's included vs. what's coming later, managing expectations upfront.
+      <PocContextCard title="About This Page">
+        This is the home screen for Contributors when they log in. From here they can see an overview of their events and quickly access the tools they need to manage their community's schedule.
+        <br /><br />
+        <strong>What's included:</strong> Quick stats, event creation, and navigation to manage events or users.
       </PocContextCard>
 
       {/* Quick Stats */}
       <Row gutter={[layout.cardGap, layout.cardGap]} style={{ marginBottom: layout.sectionGap }}>
         <Col xs={24} sm={12} lg={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic
               title="Upcoming Events"
               value={stats.upcoming}
@@ -71,7 +64,7 @@ export default function AdminDashboardPage() {
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic
               title="This Week"
               value={stats.thisWeek}
@@ -80,7 +73,7 @@ export default function AdminDashboardPage() {
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic
               title="Past Events"
               value={stats.past}
@@ -89,7 +82,7 @@ export default function AdminDashboardPage() {
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic
               title="Uri Connected"
               value={uriStats.total}
@@ -99,90 +92,122 @@ export default function AdminDashboardPage() {
         </Col>
       </Row>
 
-      {/* What's in this POC panel */}
+      {/* Quick Actions */}
+      <Row gutter={[layout.cardGap, layout.cardGap]} style={{ marginBottom: layout.sectionGap }}>
+        <Col xs={24} md={12}>
+          <Card 
+            variant="borderless"
+            style={{ 
+              height: '100%',
+              background: `linear-gradient(135deg, ${primary[50]} 0%, ${neutral[50]} 100%)`,
+              borderRadius: 16
+            }}
+          >
+            <Row align="middle" justify="space-between" gutter={[16, 16]}>
+              <Col xs={24} lg={14}>
+                <Space size={16} align="center">
+                  <div style={{ 
+                    width: 56, 
+                    height: 56, 
+                    background: '#fff', 
+                    borderRadius: 12, 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+                  }}>
+                    <CalendarOutlined style={{ fontSize: 28, color: primary[500] }} />
+                  </div>
+                  <div>
+                    <Title level={4} style={{ marginBottom: 4 }}>Manage Events</Title>
+                    <Text style={{ color: neutral[600], fontSize: 15 }}>View, edit, and create community events</Text>
+                  </div>
+                </Space>
+              </Col>
+              <Col xs={24} lg={10} style={{ textAlign: 'right' }}>
+                <Link href="/admin/events">
+                  <Button type="primary" size="large" icon={<CalendarOutlined />}>
+                    Open Events
+                  </Button>
+                </Link>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+        <Col xs={24} md={12}>
+          <Card 
+            variant="borderless"
+            style={{ 
+              height: '100%',
+              background: `linear-gradient(135deg, ${tertiary[50]} 0%, ${neutral[50]} 100%)`,
+              borderRadius: 16
+            }}
+          >
+            <Row align="middle" justify="space-between" gutter={[16, 16]}>
+              <Col xs={24} lg={14}>
+                <Space size={16} align="center">
+                  <div style={{ 
+                    width: 56, 
+                    height: 56, 
+                    background: '#fff', 
+                    borderRadius: 12, 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+                  }}>
+                    <TeamOutlined style={{ fontSize: 28, color: tertiary[500] }} />
+                  </div>
+                  <div>
+                    <Title level={4} style={{ marginBottom: 4 }}>Manage Users</Title>
+                    <Text style={{ color: neutral[600], fontSize: 15 }}>Import and assign uri to your community</Text>
+                  </div>
+                </Space>
+              </Col>
+              <Col xs={24} lg={10} style={{ textAlign: 'right' }}>
+                <Link href="/admin/users">
+                  <Button type="primary" size="large" icon={<TeamOutlined />}>
+                    Open Users
+                  </Button>
+                </Link>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Huri Noa v1 Features */}
       <Card 
-        bordered={false}
-        style={{ marginBottom: layout.sectionGap }}
+        variant="borderless"
+        style={{ 
+          background: `linear-gradient(135deg, ${primary[50]} 0%, ${secondary[50]} 100%)`,
+          borderRadius: 16,
+          border: `1px solid ${neutral[200]}`
+        }}
       >
-        <Title level={4} style={{ marginBottom: 16 }}>What's in this MVP</Title>
-        <Paragraph style={{ color: neutral[600], marginBottom: 16 }}>
-          This release demonstrates the core scheduling workflow for contributors:
+        <Title level={4} style={{ marginBottom: 8 }}>Huri Noa v1 — What's Included</Title>
+        <Paragraph style={{ color: neutral[600], marginBottom: 24, fontSize: 15 }}>
+          This is an early release focused on event coordination for Contributors.
         </Paragraph>
-        <Row gutter={[24, 16]}>
+        <Row gutter={[32, 24]}>
           <Col xs={24} md={12}>
-            <Space direction="vertical" size="small">
-              <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />Create and manage events for your community</Text>
-              <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />See clash warnings when events overlap</Text>
-              <Text><CheckCircleOutlined style={{ color: secondary[500], marginRight: 8 }} />View and edit upcoming events</Text>
+            <Text strong style={{ fontSize: 14, color: secondary[600], display: 'block', marginBottom: 12 }}>What you can do now</Text>
+            <Space direction="vertical" size={10}>
+              <Text style={{ fontSize: 15 }}><CheckCircleOutlined style={{ color: secondary[500], marginRight: 10 }} />Create and manage events for your community</Text>
+              <Text style={{ fontSize: 15 }}><CheckCircleOutlined style={{ color: secondary[500], marginRight: 10 }} />See clash warnings when events overlap</Text>
+              <Text style={{ fontSize: 15 }}><CheckCircleOutlined style={{ color: secondary[500], marginRight: 10 }} />View and edit upcoming events</Text>
             </Space>
           </Col>
           <Col xs={24} md={12}>
-            <Space direction="vertical" size="small">
-              <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />RSVP and attendee management (coming later)</Text>
-              <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />Calendar sync (.ics) — deferred for privacy</Text>
-              <Text style={{ color: neutral[400] }}><ClockCircleOutlined style={{ marginRight: 8 }} />Notifications and reminders (coming later)</Text>
+            <Text strong style={{ fontSize: 14, color: neutral[500], display: 'block', marginBottom: 12 }}>What's coming later</Text>
+            <Space direction="vertical" size={10}>
+              <Text style={{ fontSize: 15, color: neutral[500] }}><ClockCircleOutlined style={{ marginRight: 10 }} />RSVP and attendee management</Text>
+              <Text style={{ fontSize: 15, color: neutral[500] }}><ClockCircleOutlined style={{ marginRight: 10 }} />Calendar sync</Text>
+              <Text style={{ fontSize: 15, color: neutral[500] }}><ClockCircleOutlined style={{ marginRight: 10 }} />Notifications and reminders</Text>
             </Space>
           </Col>
         </Row>
       </Card>
-
-      {/* Quick Actions */}
-      <Row gutter={[layout.cardGap, layout.cardGap]}>
-        <Col xs={24} md={12}>
-          <Link href="/admin/events" style={{ display: 'block' }}>
-            <Card 
-              hoverable 
-              bordered={false}
-              style={{ height: '100%' }}
-            >
-              <Space>
-                <div style={{ 
-                  width: 48, 
-                  height: 48, 
-                  background: primary[50], 
-                  borderRadius: borderRadius.lg, 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center' 
-                }}>
-                  <CalendarOutlined style={{ fontSize: 24, color: primary[500] }} />
-                </div>
-                <div>
-                  <Title level={5} style={{ marginBottom: 4 }}>Manage Events</Title>
-                  <Text style={{ color: neutral[500] }}>View, edit, and delete your community events</Text>
-                </div>
-              </Space>
-            </Card>
-          </Link>
-        </Col>
-        <Col xs={24} md={12}>
-          <Link href="/admin/users" style={{ display: 'block' }}>
-            <Card 
-              hoverable 
-              bordered={false}
-              style={{ height: '100%' }}
-            >
-              <Space>
-                <div style={{ 
-                  width: 48, 
-                  height: 48, 
-                  background: tertiary[50], 
-                  borderRadius: borderRadius.lg, 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center' 
-                }}>
-                  <TeamOutlined style={{ fontSize: 24, color: tertiary[500] }} />
-                </div>
-                <div>
-                  <Title level={5} style={{ marginBottom: 4 }}>Manage Users</Title>
-                  <Text style={{ color: neutral[500] }}>Import and assign uri to your community</Text>
-                </div>
-              </Space>
-            </Card>
-          </Link>
-        </Col>
-      </Row>
     </>
   )
 }

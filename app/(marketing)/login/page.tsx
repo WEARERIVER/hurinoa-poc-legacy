@@ -59,7 +59,7 @@ export default function LoginPage() {
       }}
     >
       <div style={{ width: '100%', maxWidth: 400 }}>
-        <Card bordered={false}>
+        <Card variant="borderless">
           <Title level={3} style={{ marginBottom: 24, textAlign: 'center' }}>
             Login
           </Title>

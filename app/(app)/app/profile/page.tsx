@@ -33,15 +33,15 @@ export default function UriProfilePage() {
         breadcrumbs={[{ label: 'Dashboard', href: '/app' }, { label: 'My Profile' }]}
       />
 
-      <PocContextCard title="MVP Context: Uri Profile">
-        <strong>Why this page exists:</strong> Uri should be able to confirm who they are in the system and which communities they're linked to.
-        <br />
-        <strong>Scope note:</strong> Profile editing and password changes are not included in this phase.
+      <PocContextCard title="About This Page">
+        This is where Uri can view their profile and see which communities they're connected to. This helps them confirm their identity in the system and understand what events they'll have access to.
+        <br /><br />
+        <strong>Coming later:</strong> Profile editing and password management will be available in future releases. For now, updates are managed by the community administrator.
       </PocContextCard>
 
       <Row gutter={[layout.cardGap, layout.cardGap]}>
         <Col xs={24} lg={16}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 24 }}>
               <Avatar
                 size={80}
@@ -62,7 +62,7 @@ export default function UriProfilePage() {
                 <Space size={8} wrap>
                   <Tag style={{ fontWeight: 500 }}>Uri</Tag>
                   {primaryKaupapa && (
-                    <Text type="secondary">Linked to {primaryKaupapa.name}</Text>
+                    <Text type="secondary" style={{ fontSize: 15 }}>Member of {primaryKaupapa.name}</Text>
                   )}
                 </Space>
               </div>
@@ -75,10 +75,12 @@ export default function UriProfilePage() {
             </Title>
 
             <Descriptions
-              column={{ xs: 1, sm: 2 }}
+              column={1}
               size="small"
-              labelStyle={{ color: neutral[500], fontWeight: 500 }}
-              contentStyle={{ color: neutral[700] }}
+              styles={{
+                label: { color: neutral[500], fontWeight: 500 },
+                content: { color: neutral[700] }
+              }}
             >
               <Descriptions.Item label={<><MailOutlined style={{ marginRight: 8 }} />Email</>}>
                 {uri.email}
@@ -104,13 +106,13 @@ export default function UriProfilePage() {
             </Space>
 
             <Paragraph type="secondary" style={{ marginTop: 12, fontSize: 13 }}>
-              Updates are managed by your administrator in this version.
+              Updates are managed by your community administrator in this version.
             </Paragraph>
           </Card>
         </Col>
 
         <Col xs={24} lg={8}>
-          <Card bordered={false} style={{ marginBottom: layout.cardGap }}>
+          <Card variant="borderless" style={{ marginBottom: layout.cardGap }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
               <div
                 style={{
@@ -126,8 +128,8 @@ export default function UriProfilePage() {
                 <TeamOutlined style={{ fontSize: 20, color: tertiary[500] }} />
               </div>
               <div>
-                <Text type="secondary" style={{ fontSize: 12, display: 'block' }}>Linked Kaupapa</Text>
-                <Text strong style={{ fontSize: 16 }}>{linkedKaupapa.length}</Text>
+                <Text type="secondary" style={{ fontSize: 13, display: 'block' }}>Linked Communities</Text>
+                <Text strong style={{ fontSize: 18 }}>{linkedKaupapa.length}</Text>
               </div>
             </div>
 
@@ -135,12 +137,12 @@ export default function UriProfilePage() {
 
             <Space direction="vertical" size={8} style={{ width: '100%' }}>
               {linkedKaupapa.map((k) => (
-                <Card key={k.id} size="small" bordered style={{ background: '#fff' }}>
-                  <Text strong>{k.name}</Text>
+                <Card key={k.id} size="small" variant="outlined" style={{ background: '#fff' }}>
+                  <Text strong style={{ fontSize: 15 }}>{k.name}</Text>
                 </Card>
               ))}
               {linkedKaupapa.length === 0 && (
-                <Text type="secondary">No kaupapa linked yet.</Text>
+                <Text type="secondary">No communities linked yet.</Text>
               )}
             </Space>
           </Card>

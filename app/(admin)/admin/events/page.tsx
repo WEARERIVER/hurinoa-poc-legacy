@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { 
   Typography, 
   Card, 
@@ -70,6 +71,7 @@ type ViewMode = 'calendar' | 'list'
  */
 export default function EventsPage() {
   const { message, modal } = App.useApp()
+  const searchParams = useSearchParams()
   
   // View state - initialize from hash if present
   const [viewMode, setViewMode] = useState<ViewMode>('calendar')
@@ -82,6 +84,17 @@ export default function EventsPage() {
       setViewMode(hash)
     }
   }, [])
+  
+  // Auto-open create modal if ?create=true is in URL
+  useEffect(() => {
+    if (searchParams.get('create') === 'true') {
+      setEditingEvent(null)
+      form.resetFields()
+      setEventModalOpen(true)
+      // Clean up URL
+      window.history.replaceState(null, '', '/admin/events')
+    }
+  }, [searchParams])
   
   const handleViewModeChange = (mode: ViewMode) => {
     setViewMode(mode)
@@ -378,28 +391,16 @@ export default function EventsPage() {
         }
       />
 
-      <PocContextCard title="MVP Context: Event Management">
-        <strong>Why this page exists:</strong> This is the <em>core of the MVP</em>. The second stakeholder hui 
-        revealed that contributors' main pain point is <strong>avoiding scheduling clashes</strong> when creating events. 
-        This page directly addresses that insight with soft clash detection.
+      <PocContextCard title="About This Page">
+        This is where Contributors create and manage events for their community. The key feature is soft clash detection — when creating an event, Contributors see a warning if another community has an event at the same time.
+        <br /><br />
+        <strong>What's included:</strong> Create/edit events, calendar and list views, clash warnings, and community filtering to see potential overlaps.
         <br />
-        <strong>What we're demonstrating:</strong>
-        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
-          <li>Create events with title, date/time, location, description (modal)</li>
-          <li>Clash warnings shown during creation (yellow alert with community names)</li>
-          <li>View events chronologically (list view with sorting)</li>
-          <li>Community filter: Toggle visibility of other communities to see potential overlaps</li>
-        </ul>
-        <strong>Design decisions:</strong> We offer both calendar and list views to suit different workflows. 
-        The calendar lets contributors click a date to create, while the list is better for bulk review. 
-        Clash detection is "soft" — it warns but doesn't block, respecting contributor autonomy. 
-        The preview modal for other community events only shows date/time (not location) to protect privacy.
-        <br />
-        <strong>What's NOT here:</strong> RSVP, recurring events, .ics export (deferred for privacy), notifications — all explicitly out of scope per brief.
+        <strong>Coming later:</strong> RSVP, recurring events, calendar sync, and notifications are planned for future releases.
       </PocContextCard>
 
       {/* View Controls */}
-      <Card bordered={false} style={{ marginBottom: layout.cardGap }}>
+      <Card variant="borderless" style={{ marginBottom: layout.cardGap }}>
         <Row gutter={16} align="middle" justify="space-between">
           <Col>
             <Segmented
@@ -411,9 +412,8 @@ export default function EventsPage() {
               ]}
             />
           </Col>
-          <Col>
-            <Space>
-              <FilterOutlined style={{ color: neutral[500] }} />
+          {viewMode === 'calendar' && (
+            <Col>
               <Select
                 mode="multiple"
                 placeholder="Show all communities"
@@ -427,8 +427,8 @@ export default function EventsPage() {
                   value: k.id,
                 }))}
               />
-            </Space>
-          </Col>
+            </Col>
+          )}
         </Row>
       </Card>
 

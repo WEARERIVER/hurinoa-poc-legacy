@@ -298,30 +298,18 @@ export default function UsersPage() {
         }
       />
 
-      <PocContextCard title="MVP Context: User Management">
-        <strong>Why this page exists:</strong> The brief requires admins to be able to upload CSV or manually 
-        assign users (uri) to communities. This page demonstrates the contributor's ability to manage their user list, 
-        which is the basis for the uri-to-community linkage that powers the Uri Dashboard.
+      <PocContextCard title="About This Page">
+        This is where Contributors manage the users (uri) linked to their community. Users can be added manually and assigned roles.
+        <br /><br />
+        <strong>What's included:</strong> View all users with search and filters, add new users manually, edit user details, and toggle active/inactive status.
         <br />
-        <strong>What we're demonstrating:</strong>
-        <ul style={{ margin: '8px 0', paddingLeft: 20 }}>
-          <li>View all uri linked to this community with search and filters</li>
-          <li>Add new uri manually (simplified form in lieu of full CSV import)</li>
-          <li>Edit uri details and toggle active/inactive status</li>
-          <li>Role assignment (contributor vs uri) — scoped to one community per the MVP assumption</li>
-        </ul>
-        <strong>Design decisions:</strong> For this MVP, users are added manually to ensure correctness, privacy, and alignment with community approval processes. 
-        This proves the data model and UI patterns; CSV upload could be added in a future phase.
-        <br />
-        <strong>Scope note:</strong> The brief states "one contributor or uri per community for MVP". We've shown users 
-        can be linked to multiple communities in the data model (for future flexibility), but the UI is scoped to managing 
-        users within the current contributor's single community.
+        <strong>Coming later:</strong> CSV bulk import and more advanced user management features are planned for future releases.
       </PocContextCard>
 
       {/* Stats Cards */}
       <Row gutter={layout.cardGap} style={{ marginBottom: layout.cardGap }}>
         <Col xs={12} sm={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic 
               title="Total Users" 
               value={stats.total} 
@@ -330,7 +318,7 @@ export default function UsersPage() {
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic 
               title="Active" 
               value={stats.active}
@@ -339,7 +327,7 @@ export default function UsersPage() {
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic 
               title="Contributors" 
               value={stats.contributors}
@@ -348,7 +336,7 @@ export default function UsersPage() {
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card bordered={false}>
+          <Card variant="borderless">
             <Statistic 
               title="Uri" 
               value={stats.uriCount}
@@ -359,7 +347,7 @@ export default function UsersPage() {
       </Row>
 
       {/* Search and Filters */}
-      <Card bordered={false} style={{ marginBottom: layout.cardGap }}>
+      <Card variant="borderless" style={{ marginBottom: layout.cardGap }}>
         <Row gutter={16} align="middle">
           <Col flex="auto">
             <Input
